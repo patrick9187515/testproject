@@ -14,6 +14,9 @@
 		43EA685A1E95365D00B94683 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43EA68581E95365D00B94683 /* LaunchScreen.storyboard */; };
 		43EA68651E95365D00B94683 /* TestProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA68641E95365D00B94683 /* TestProjectTests.swift */; };
 		43EA68701E95365D00B94683 /* TestProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA686F1E95365D00B94683 /* TestProjectUITests.swift */; };
+		43EA687E1E953AEA00B94683 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA687D1E953AEA00B94683 /* TableViewController.swift */; };
+		43EA68801E953D9300B94683 /* MenuItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43EA687F1E953D9300B94683 /* MenuItem.xib */; };
+		43EA68821E95432800B94683 /* FruitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA68811E95432800B94683 /* FruitsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		43EA686B1E95365D00B94683 /* TestProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43EA686F1E95365D00B94683 /* TestProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProjectUITests.swift; sourceTree = "<group>"; };
 		43EA68711E95365D00B94683 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43EA687D1E953AEA00B94683 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		43EA687F1E953D9300B94683 /* MenuItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuItem.xib; sourceTree = "<group>"; };
+		43EA68811E95432800B94683 /* FruitsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,9 +106,12 @@
 				43EA684F1E95365D00B94683 /* AppDelegate.swift */,
 				43EA68511E95365D00B94683 /* ViewController.swift */,
 				43EA68531E95365D00B94683 /* Main.storyboard */,
+				43EA68811E95432800B94683 /* FruitsViewController.swift */,
 				43EA68561E95365D00B94683 /* Assets.xcassets */,
 				43EA68581E95365D00B94683 /* LaunchScreen.storyboard */,
 				43EA685B1E95365D00B94683 /* Info.plist */,
+				43EA687D1E953AEA00B94683 /* TableViewController.swift */,
+				43EA687F1E953D9300B94683 /* MenuItem.xib */,
 			);
 			path = TestProject;
 			sourceTree = "<group>";
@@ -233,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43EA685A1E95365D00B94683 /* LaunchScreen.storyboard in Resources */,
+				43EA68801E953D9300B94683 /* MenuItem.xib in Resources */,
 				43EA68571E95365D00B94683 /* Assets.xcassets in Resources */,
 				43EA68551E95365D00B94683 /* Main.storyboard in Resources */,
 			);
@@ -260,6 +270,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				43EA68521E95365D00B94683 /* ViewController.swift in Sources */,
+				43EA68821E95432800B94683 /* FruitsViewController.swift in Sources */,
+				43EA687E1E953AEA00B94683 /* TableViewController.swift in Sources */,
 				43EA68501E95365D00B94683 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
