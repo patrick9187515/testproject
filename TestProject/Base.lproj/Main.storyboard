@@ -6,60 +6,57 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Post List View Controller-->
         <scene sceneID="TMs-gN-l9M">
             <objects>
-                <tableViewController id="VyE-Pg-Opa" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="2WL-c4-tXn">
+                <tableViewController id="VyE-Pg-Opa" customClass="PostListViewController" customModule="TestProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="330" sectionHeaderHeight="28" sectionFooterHeight="28" id="2WL-c4-tXn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <sections>
-                            <tableViewSection headerTitle="Table Demos" id="hDu-kn-Qr0">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="0Ma-TP-pwq" style="IBUITableViewCellStyleDefault" id="QiD-ac-dPf">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QiD-ac-dPf" id="jSD-xD-7jy">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Fruits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Ma-TP-pwq">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="H87-eR-yWc" kind="show" id="59d-pB-CMG"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="SyS-2T-h32" style="IBUITableViewCellStyleDefault" id="fqW-Na-Kgz">
-                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fqW-Na-Kgz" id="obM-9W-9gu">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Cars" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SyS-2T-h32">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCell" rowHeight="330" id="QiD-ac-dPf" customClass="PostTableViewCell" customModule="TestProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="330"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QiD-ac-dPf" id="jSD-xD-7jy">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="329"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KYf-Pi-OuS">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="KYf-Pi-OuS" secondAttribute="height" multiplier="780:400" id="HRR-LT-kaW"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Header" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75e-YP-UIW">
+                                            <rect key="frame" x="0.0" y="200" width="375" height="64"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="64" id="pyb-4d-pLO"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="75e-YP-UIW" firstAttribute="width" secondItem="jSD-xD-7jy" secondAttribute="width" id="2UT-e7-FbU"/>
+                                        <constraint firstItem="75e-YP-UIW" firstAttribute="top" secondItem="KYf-Pi-OuS" secondAttribute="bottom" constant="8" symbolic="YES" id="9ne-f5-6NZ"/>
+                                        <constraint firstItem="KYf-Pi-OuS" firstAttribute="width" secondItem="jSD-xD-7jy" secondAttribute="width" id="FRe-mj-hj8"/>
+                                        <constraint firstItem="KYf-Pi-OuS" firstAttribute="centerX" secondItem="jSD-xD-7jy" secondAttribute="centerX" id="GYs-ep-jje"/>
+                                        <constraint firstItem="75e-YP-UIW" firstAttribute="centerX" secondItem="jSD-xD-7jy" secondAttribute="centerX" id="pf1-hM-cFm"/>
+                                        <constraint firstItem="KYf-Pi-OuS" firstAttribute="top" secondItem="jSD-xD-7jy" secondAttribute="top" id="xoM-Xi-7sm"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="H87-eR-yWc" kind="show" id="DQ6-7p-0fN"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="VyE-Pg-Opa" id="qye-0Q-SCo"/>
                             <outlet property="delegate" destination="VyE-Pg-Opa" id="8UE-Rd-SIP"/>
