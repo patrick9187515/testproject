@@ -33,25 +33,26 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Header" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75e-YP-UIW">
-                                            <rect key="frame" x="0.0" y="200" width="375" height="64"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="64" id="pyb-4d-pLO"/>
-                                            </constraints>
+                                            <rect key="frame" x="8" y="200" width="359" height="121"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="75e-YP-UIW" firstAttribute="width" secondItem="jSD-xD-7jy" secondAttribute="width" id="2UT-e7-FbU"/>
+                                        <constraint firstItem="KYf-Pi-OuS" firstAttribute="top" secondItem="jSD-xD-7jy" secondAttribute="top" id="8vX-hU-QRo"/>
                                         <constraint firstItem="75e-YP-UIW" firstAttribute="top" secondItem="KYf-Pi-OuS" secondAttribute="bottom" constant="8" symbolic="YES" id="9ne-f5-6NZ"/>
+                                        <constraint firstAttribute="bottom" secondItem="75e-YP-UIW" secondAttribute="bottom" constant="8" id="Ehm-AL-jmR"/>
                                         <constraint firstItem="KYf-Pi-OuS" firstAttribute="width" secondItem="jSD-xD-7jy" secondAttribute="width" id="FRe-mj-hj8"/>
-                                        <constraint firstItem="KYf-Pi-OuS" firstAttribute="centerX" secondItem="jSD-xD-7jy" secondAttribute="centerX" id="GYs-ep-jje"/>
-                                        <constraint firstItem="75e-YP-UIW" firstAttribute="centerX" secondItem="jSD-xD-7jy" secondAttribute="centerX" id="pf1-hM-cFm"/>
-                                        <constraint firstItem="KYf-Pi-OuS" firstAttribute="top" secondItem="jSD-xD-7jy" secondAttribute="top" id="xoM-Xi-7sm"/>
+                                        <constraint firstAttribute="trailing" secondItem="KYf-Pi-OuS" secondAttribute="trailing" id="NCw-tH-K4s"/>
+                                        <constraint firstAttribute="trailing" secondItem="75e-YP-UIW" secondAttribute="trailing" constant="8" id="QCu-gL-1lz"/>
+                                        <constraint firstItem="75e-YP-UIW" firstAttribute="leading" secondItem="jSD-xD-7jy" secondAttribute="leading" constant="8" id="XjD-5u-ZNk"/>
+                                        <constraint firstItem="75e-YP-UIW" firstAttribute="top" secondItem="KYf-Pi-OuS" secondAttribute="bottom" constant="8" id="su8-oB-nrJ"/>
+                                        <constraint firstItem="KYf-Pi-OuS" firstAttribute="leading" secondItem="jSD-xD-7jy" secondAttribute="leading" id="ylt-Oa-Dz0"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="label" destination="75e-YP-UIW" id="0If-QT-dsp"/>
                                     <segue destination="H87-eR-yWc" kind="show" id="DQ6-7p-0fN"/>
                                 </connections>
                             </tableViewCell>

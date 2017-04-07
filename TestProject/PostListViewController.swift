@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
@@ -16,6 +17,25 @@ class PostTableViewCell: UITableViewCell {
 class PostListViewController: UITableViewController {
     
     var posts = ["Special-Edition Puma ONE Chrome 2017-2018 Boots Leaked", "All-New Adidas Futurecraft 4D Runner Revealed"]
+    
+    func getDataFromUrl(url: URL, completion: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) {
+        URLSession.shared.dataTask(with: url) {
+            (data, response, error) in
+            completion(data, response, error)
+        }.resume()
+    }
+    
+    func downloadImage(url: URL, imageView: UIImageView) {
+        print("Download started")
+        getDataFromUrl(url: url) { (data, response, error) in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download finished")
+            DispatchQueue.main.async () { () -> Void in
+                imageView.image = UIImage(data: data)
+            }
+        }
+    }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
@@ -36,19 +56,10 @@ class PostListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath) as! PostTableViewCell
         
-        /*
-        let imageURL = NSURL(string: "http://cdn.footyheadlines.com/header.jpg")
-        let data = NSData(contentsOf: imageURL! as URL)
-        let image = UIImage(data: data! as Data)
- */
+        let imageUrl = URL(string: "http://cdn.footyheadlines.com/header.jpg")
         
-        if let filePath = Bundle.main.path(forResource: "http://cdn.footyheadlines.com/header.jpg", ofType: "jpg"), let image = UIImage(contentsOfFile: filePath) {
-            cell.headerImageView.contentMode = .scaleAspectFit
-            cell.headerImageView.image = image
-        }
-        
+        cell.headerImageView?.af_setImage(withURL: imageURL)
         cell.label?.text = posts[indexPath.row]
-        //cell.headerImageView?.image = image
         
         return cell
     }
