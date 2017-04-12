@@ -26,8 +26,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="329"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KYf-Pi-OuS">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="puma-one-chrome-2017-2018-boots-1" translatesAutoresizingMaskIntoConstraints="NO" id="KYf-Pi-OuS">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <bool key="isElement" value="YES"/>
+                                            </accessibility>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="KYf-Pi-OuS" secondAttribute="height" multiplier="780:400" id="HRR-LT-kaW"/>
                                             </constraints>
@@ -52,6 +55,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="headerImage" destination="KYf-Pi-OuS" id="Grt-Tf-Ch1"/>
                                     <outlet property="label" destination="75e-YP-UIW" id="0If-QT-dsp"/>
                                     <segue destination="H87-eR-yWc" kind="show" id="DQ6-7p-0fN"/>
                                 </connections>
@@ -125,4 +129,7 @@
             <point key="canvasLocation" x="1716" y="36"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="puma-one-chrome-2017-2018-boots-1" width="780" height="400"/>
+    </resources>
 </document>
