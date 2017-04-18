@@ -20,15 +20,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCell" rowHeight="330" id="QiD-ac-dPf" customClass="PostTableViewCell" customModule="TestProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="330"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LabelCell" rowHeight="300" id="QiD-ac-dPf" customClass="PostTableViewCell" customModule="TestProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" tableViewCell="QiD-ac-dPf" id="jSD-xD-7jy">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="330"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TJg-XX-nQu">
-                                            <rect key="frame" x="20" y="20" width="335" height="302"/>
+                                            <rect key="frame" x="20" y="20" width="335" height="272"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="puma-one-chrome-2017-2018-boots-1" translatesAutoresizingMaskIntoConstraints="NO" id="KYf-Pi-OuS">
                                                     <rect key="frame" x="0.0" y="0.0" width="335" height="172"/>
@@ -40,10 +40,10 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k8t-hW-xbk">
-                                                    <rect key="frame" x="0.0" y="172" width="335" height="130"/>
+                                                    <rect key="frame" x="0.0" y="172" width="335" height="100"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75e-YP-UIW">
-                                                            <rect key="frame" x="10" y="10" width="315" height="110"/>
+                                                            <rect key="frame" x="10" y="10" width="315" height="80"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <attributedString key="attributedText">
                                                                 <fragment content="Test Header">
@@ -71,7 +71,6 @@
                                             </constraints>
                                         </stackView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="TJg-XX-nQu" firstAttribute="top" secondItem="jSD-xD-7jy" secondAttribute="top" constant="20" id="HSP-tD-Xly"/>
                                         <constraint firstItem="TJg-XX-nQu" firstAttribute="leading" secondItem="jSD-xD-7jy" secondAttribute="leading" constant="20" id="nds-fr-es9"/>
@@ -79,10 +78,11 @@
                                         <constraint firstAttribute="trailing" secondItem="TJg-XX-nQu" secondAttribute="trailing" constant="20" id="uGb-rl-yxR"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="headerImage" destination="KYf-Pi-OuS" id="Grt-Tf-Ch1"/>
                                     <outlet property="label" destination="75e-YP-UIW" id="0If-QT-dsp"/>
-                                    <segue destination="H87-eR-yWc" kind="show" id="DQ6-7p-0fN"/>
+                                    <segue destination="H87-eR-yWc" kind="show" id="fZn-bG-sF1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -103,9 +103,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wJ8-cj-cRF" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="zEp-7e-3rc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="zEp-7e-3rc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="1" green="0.53333333333333333" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -152,7 +153,11 @@
                             <outlet property="delegate" destination="H87-eR-yWc" id="k2s-Xm-gZq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ntQ-aF-EcC"/>
+                    <navigationItem key="navigationItem" id="ntQ-aF-EcC">
+                        <string key="userLabel" base64-UTF8="YES">
+CQ
+</string>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dHO-7y-I2E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -38,8 +38,10 @@ class PostListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath) as! PostTableViewCell
         
+        if posts2.count > indexPath.row {
         cell.headerImage?.sd_setImage(with: URL(string: posts2[indexPath.row].image))
         cell.label?.text = posts2[indexPath.row].title
+        }
         
         return cell
     }
