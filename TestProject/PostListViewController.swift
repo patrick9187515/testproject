@@ -13,11 +13,52 @@ import Firebase
 class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var headerImage: UIImageView!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, UIEdgeInsetsMake(20, 20, 0, 20))
+    }
 }
 
 class PostListViewController: UITableViewController {
     var posts2 = [Post]()
     var page = 1
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationItem.title = "Footy Headlines"
+        
+        tableView.register(UINib(nibName: "PostIndexView", bundle: nil),
+                           forCellReuseIdentifier: "PostIndexViewCell")
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 200
+        
+        //load data
+        loadPosts()
+        
+        //refresh
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        
+        //add to table view
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //indexPath.row
+        
+        let storyboard = UIStoryboard(name:"Main",bundle:nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "postItem") as UIViewController
+        
+        self.present(vc, animated: true, completion: nil)
+    }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
@@ -36,7 +77,7 @@ class PostListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath) as! PostTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostIndexViewCell", for: indexPath) as! PostIndexView
         
         if posts2.count > indexPath.row {
         cell.headerImage?.sd_setImage(with: URL(string: posts2[indexPath.row].image))
@@ -57,28 +98,6 @@ class PostListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return ""
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.navigationItem.title = "Footy Headlines"
-        
-        loadPosts()
- 
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 200
-        
-        //refresh
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
-        
-        //add to table view
-        if #available(iOS 10.0, *) {
-            tableView.refreshControl = refreshControl
-        } else {
-            tableView.addSubview(refreshControl)
-        }
     }
     
     func refresh(_ refreshControl: UIRefreshControl) {

@@ -9,6 +9,8 @@
 import UIKit
 
 class PostIndexView: UITableViewCell {
+    @IBOutlet weak var headerImage: UIImageView!
+    @IBOutlet weak var label: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
