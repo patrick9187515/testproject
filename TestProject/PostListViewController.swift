@@ -24,6 +24,7 @@ class PostTableViewCell: UITableViewCell {
 class PostListViewController: UITableViewController {
     var posts2 = [Post]()
     var page = 1
+    var selectedPost : Post?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,10 +55,20 @@ class PostListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //indexPath.row
         
-        let storyboard = UIStoryboard(name:"Main",bundle:nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "postItem") as UIViewController
+        selectedPost = posts2[indexPath.row]
         
-        self.present(vc, animated: true, completion: nil)
+        //let destinationVC = PostItemViewController()
+        //destinationVC.post = selectedPost
+        
+        //destinationVC.performSegue(withIdentifier: "ShowPost", sender: nil)
+        
+        self.performSegue(withIdentifier: "ShowPost", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! PostItemViewController
+        
+        destinationVC.post = selectedPost
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
