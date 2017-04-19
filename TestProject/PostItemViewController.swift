@@ -8,8 +8,9 @@
 
 import UIKit
 
-class PostItemViewController: UIViewController {
+class PostItemViewController: UITableViewController {
     @IBOutlet weak var postTitle: UILabel!
+    @IBOutlet weak var stackView: UIStackView!
     
     var post : Post?
 
@@ -22,6 +23,21 @@ class PostItemViewController: UIViewController {
         
         postTitle.text = "test"
         postTitle.text = post?.title
+        
+        let paragraphs = getParagraphs(content: (post?.content)!)
+        
+        for paragraph in paragraphs {
+            let label = UILabel()
+            label.text = paragraph
+            label.translatesAutoresizingMaskIntoConstraints = false
+            stackView.addArrangedSubview(label)
+        }
+    }
+    
+    func getParagraphs(content: String) -> Array<String> {
+        let paragraphs = content.components(separatedBy: "<br />")
+        
+        return paragraphs
     }
 
     override func didReceiveMemoryWarning() {

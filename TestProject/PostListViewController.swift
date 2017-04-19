@@ -140,7 +140,10 @@ class PostListViewController: UITableViewController {
                 if let postsArray = jsonData!.value(forKey: "posts") as? NSArray {
                     for post in postsArray {
                         if let postDict = post as? NSDictionary {
-                            self.posts2.append(Post(title: postDict.value(forKey: "title") as! String, image: postDict.value(forKey: "image") as! String)!)
+                            self.posts2.append(Post(
+                                title: postDict.value(forKey: "title") as! String,
+                                content: postDict.value(forKey: "content") as! String,
+                                image: postDict.value(forKey: "image") as! String))
                         }
                     }
                 }
