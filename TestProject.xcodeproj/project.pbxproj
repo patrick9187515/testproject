@@ -11,6 +11,10 @@
 		4324CA341E978FDA005D82FF /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324CA331E978FDA005D82FF /* PostListViewController.swift */; };
 		4324CA361E97D5EE005D82FF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324CA351E97D5EE005D82FF /* Post.swift */; };
 		432BF58C1EA642820055BEE6 /* Ad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 432BF58A1EA642820055BEE6 /* Ad.xib */; };
+		433380441EA90FC7006E41D3 /* PostItemText.xib in Resources */ = {isa = PBXBuildFile; fileRef = 433380431EA90FC7006E41D3 /* PostItemText.xib */; };
+		433380461EA910BE006E41D3 /* PostItemText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433380451EA910BE006E41D3 /* PostItemText.swift */; };
+		433380491EA9182B006E41D3 /* PostItemImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433380471EA9182B006E41D3 /* PostItemImage.swift */; };
+		4333804A1EA9182B006E41D3 /* PostItemImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 433380481EA9182B006E41D3 /* PostItemImage.xib */; };
 		434E857C1EA598BB002B0144 /* PostIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434E857A1EA598BB002B0144 /* PostIndexView.swift */; };
 		434E857D1EA598BB002B0144 /* PostIndexView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 434E857B1EA598BB002B0144 /* PostIndexView.xib */; };
 		43EA68501E95365D00B94683 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA684F1E95365D00B94683 /* AppDelegate.swift */; };
@@ -49,6 +53,10 @@
 		4324CA331E978FDA005D82FF /* PostListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		4324CA351E97D5EE005D82FF /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		432BF58A1EA642820055BEE6 /* Ad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Ad.xib; sourceTree = "<group>"; };
+		433380431EA90FC7006E41D3 /* PostItemText.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostItemText.xib; sourceTree = "<group>"; };
+		433380451EA910BE006E41D3 /* PostItemText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostItemText.swift; sourceTree = "<group>"; };
+		433380471EA9182B006E41D3 /* PostItemImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostItemImage.swift; sourceTree = "<group>"; };
+		433380481EA9182B006E41D3 /* PostItemImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostItemImage.xib; sourceTree = "<group>"; };
 		434E857A1EA598BB002B0144 /* PostIndexView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostIndexView.swift; sourceTree = "<group>"; };
 		434E857B1EA598BB002B0144 /* PostIndexView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostIndexView.xib; sourceTree = "<group>"; };
 		43EA684C1E95365D00B94683 /* TestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +137,10 @@
 				43EA684F1E95365D00B94683 /* AppDelegate.swift */,
 				43EA68511E95365D00B94683 /* ViewController.swift */,
 				43EA68531E95365D00B94683 /* Main.storyboard */,
+				433380431EA90FC7006E41D3 /* PostItemText.xib */,
+				433380471EA9182B006E41D3 /* PostItemImage.swift */,
+				433380481EA9182B006E41D3 /* PostItemImage.xib */,
+				433380451EA910BE006E41D3 /* PostItemText.swift */,
 				43FDEC871EA6D5D80065C400 /* PostItemViewController.swift */,
 				43EA68561E95365D00B94683 /* Assets.xcassets */,
 				43EA68581E95365D00B94683 /* LaunchScreen.storyboard */,
@@ -302,7 +314,9 @@
 				432BF58C1EA642820055BEE6 /* Ad.xib in Resources */,
 				43EA685A1E95365D00B94683 /* LaunchScreen.storyboard in Resources */,
 				43EA68571E95365D00B94683 /* Assets.xcassets in Resources */,
+				433380441EA90FC7006E41D3 /* PostItemText.xib in Resources */,
 				43EA68551E95365D00B94683 /* Main.storyboard in Resources */,
+				4333804A1EA9182B006E41D3 /* PostItemImage.xib in Resources */,
 				434E857D1EA598BB002B0144 /* PostIndexView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,6 +486,8 @@
 				434E857C1EA598BB002B0144 /* PostIndexView.swift in Sources */,
 				43EA68501E95365D00B94683 /* AppDelegate.swift in Sources */,
 				4324CA361E97D5EE005D82FF /* Post.swift in Sources */,
+				433380491EA9182B006E41D3 /* PostItemImage.swift in Sources */,
+				433380461EA910BE006E41D3 /* PostItemText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
