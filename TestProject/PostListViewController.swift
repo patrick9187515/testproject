@@ -33,6 +33,8 @@ class PostListViewController: UITableViewController {
         
         tableView.register(UINib(nibName: "PostIndexView", bundle: nil),
                            forCellReuseIdentifier: "PostIndexViewCell")
+        tableView.register(UINib(nibName: "PostIndexZZZView", bundle: nil),
+                            forCellReuseIdentifier: "PostZZZIndexViewCell")
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
@@ -88,6 +90,10 @@ class PostListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let post = posts2[indexPath.row]
+        
+        if (post.zzz == 0) {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostIndexViewCell", for: indexPath) as! PostIndexView
         
         if posts2.count > indexPath.row {
@@ -96,6 +102,17 @@ class PostListViewController: UITableViewController {
         }
         
         return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PostZZZIndexViewCell", for: indexPath) as! PostIndexZZZView
+            
+            if posts2.count > indexPath.row {
+                cell.headerImage?.sd_setImage(with: URL(string: posts2[indexPath.row].imageSquare))
+                cell.title?.text = posts2[indexPath.row].title
+                }
+            
+            return cell
+        }
+        return UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -141,9 +158,11 @@ class PostListViewController: UITableViewController {
                     for post in postsArray {
                         if let postDict = post as? NSDictionary {
                             self.posts2.append(Post(
+                                url: postDict.value(forKey: "url") as! String,
                                 title: postDict.value(forKey: "title") as! String,
+                                image: postDict.value(forKey: "image") as! String,
                                 content: postDict.value(forKey: "content") as! String,
-                                image: postDict.value(forKey: "image") as! String))
+                                zzz: Int(postDict.value(forKey: "ZZZ") as! String)!)!)
                         }
                     }
                 }

@@ -9,22 +9,38 @@
 import Foundation
 
 struct Post {
+    let id: String
+    let url: String
     let title: String
     let content: String
+    let timestamp: Date
     let image: String
+    let imageSquare: String
+    let commentCount: Int
+    let labels: String
+    let ageLabel: String
+    let zzz: Int
 }
 
 extension Post {
-    init?(title: String, image: String) {
+    init?(url: String, title: String, image: String, content: String, zzz: Int) {
         guard let title = title as? String,
         let image = image as? String
             else {
                 return nil;
         }
         
+        self.id = ""
+        self.url = url
         self.title = title
-        self.image = image
         self.content = ""
+        self.timestamp = Date()
+        self.image = image
+        self.imageSquare = image
+        self.commentCount = 0
+        self.labels = ""
+        self.ageLabel = ""
+        self.zzz = zzz
     }
 }
 

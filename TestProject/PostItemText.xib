@@ -15,9 +15,13 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FCr-6C-Iar" id="nIi-we-uXg">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P5s-2P-gJS">
+                        <rect key="frame" x="8" y="0.0" width="359" height="87.5"/>
+                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </webView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2g-bD-jTI">
                         <rect key="frame" x="8" y="0.0" width="359" height="87.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -27,14 +31,24 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="m2g-bD-jTI" secondAttribute="trailing" id="0c7-8o-ge6"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="P5s-2P-gJS" secondAttribute="trailing" id="68z-fH-mXq"/>
                     <constraint firstAttribute="bottom" secondItem="m2g-bD-jTI" secondAttribute="bottom" id="7v8-KO-mtb"/>
                     <constraint firstItem="m2g-bD-jTI" firstAttribute="leading" secondItem="nIi-we-uXg" secondAttribute="leadingMargin" id="WIQ-D2-nx5"/>
+                    <constraint firstItem="P5s-2P-gJS" firstAttribute="leading" secondItem="nIi-we-uXg" secondAttribute="leadingMargin" id="cxt-PX-mpN"/>
                     <constraint firstItem="m2g-bD-jTI" firstAttribute="top" secondItem="nIi-we-uXg" secondAttribute="topMargin" id="qBb-Wz-yKd"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="P5s-2P-gJS" secondAttribute="bottom" id="sfe-bL-1ZC"/>
+                    <constraint firstItem="P5s-2P-gJS" firstAttribute="top" secondItem="nIi-we-uXg" secondAttribute="topMargin" id="z5T-Ij-n3B"/>
                 </constraints>
                 <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
+                <variation key="default">
+                    <mask key="subviews">
+                        <exclude reference="m2g-bD-jTI"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="label" destination="m2g-bD-jTI" id="2oj-EJ-9Ss"/>
+                <outlet property="webView" destination="P5s-2P-gJS" id="ACn-qj-9Cn"/>
             </connections>
             <point key="canvasLocation" x="-328.5" y="-36"/>
         </tableViewCell>

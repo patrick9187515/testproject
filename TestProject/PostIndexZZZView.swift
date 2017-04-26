@@ -1,18 +1,17 @@
 //
-//  PostItemText.swift
+//  PostIndexZZZView.swift
 //  TestProject
 //
-//  Created by pat t on 4/20/17.
+//  Created by pat t on 4/26/17.
 //  Copyright © 2017 Footy Headlines. All rights reserved.
 //
 
 import UIKit
 
-class PostItemText: UITableViewCell {
+class PostIndexZZZView: UITableViewCell {
+    @IBOutlet weak var headerImage: UIImageView!
+    @IBOutlet weak var title: UILabel!
 
-    @IBOutlet weak var webView: UIWebView!
-    @IBOutlet weak var label: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,5 +22,5 @@ class PostItemText: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

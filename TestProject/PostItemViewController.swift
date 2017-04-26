@@ -60,9 +60,9 @@ class PostItemViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if paragraphs[indexPath.row].type == "image" {
+        //if paragraphs[indexPath.row].type == "image" {
             //return CGFloat(paragraphs[indexPath.row].images[0].height)
-        }
+        //}
         return UITableViewAutomaticDimension
     }
     
@@ -87,8 +87,8 @@ class PostItemViewController: UITableViewController {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostImageCell", for: indexPath) as! PostItemImage
             
-            //cell.postItemImageView.sd_setImage(with: URL(string: imageUrl))
-            cell.postItemImageView.sd_setImage(with: URL(string: imageUrl), completed: { (image, error, imageCacheType, imageUrl) in
+            cell.postItemImageView.sd_setImage(with: URL(string: imageUrl))
+            /*cell.postItemImageView.sd_setImage(with: URL(string: imageUrl)), completed: { (image, error, imageCacheType, imageUrl) in
                 paragraph.images[0].height = 20
                 let mHeight = image?.size.height
                 let mWidth = image?.size.width
@@ -103,7 +103,7 @@ class PostItemViewController: UITableViewController {
                 //cell.postItemImageView.addConstraint(constraint)
                 
                 print(newHeight)
-            })
+            })*/
             
             return cell
         } else {
@@ -112,6 +112,8 @@ class PostItemViewController: UITableViewController {
         
         if paragraphs.count > indexPath.row {
             cell.label.text = paragraphs[indexPath.row].content
+            
+            cell.webView.loadHTMLString(paragraphs[indexPath.row].content, baseURL: nil)
             
             return cell
         }
