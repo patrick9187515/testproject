@@ -26,7 +26,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="L4U-0P-BPW" kind="show" identifier="ShowPost" id="yi5-e8-8fu"/>
+                                    <segue destination="L4U-0P-BPW" kind="show" identifier="ShowPost" id="edZ-DA-ENe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

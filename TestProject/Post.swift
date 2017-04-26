@@ -33,7 +33,7 @@ extension Post {
         self.id = ""
         self.url = url
         self.title = title
-        self.content = ""
+        self.content = content
         self.timestamp = Date()
         self.image = image
         self.imageSquare = image

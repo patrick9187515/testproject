@@ -12,7 +12,7 @@ import Foundation
 struct Image {
     let url: String
     var height: Int
-    let width: Int
+    var width: Int
 }
 
 struct Paragraph {
@@ -60,9 +60,11 @@ class PostItemViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //if paragraphs[indexPath.row].type == "image" {
-            //return CGFloat(paragraphs[indexPath.row].images[0].height)
-        //}
+        if paragraphs[indexPath.row].type == "image" {
+            if paragraphs[indexPath.row].images[0].width > 0 {
+            return CGFloat(paragraphs[indexPath.row].images[0].height)
+            }
+        }
         return UITableViewAutomaticDimension
     }
     
@@ -87,23 +89,36 @@ class PostItemViewController: UITableViewController {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostImageCell", for: indexPath) as! PostItemImage
             
-            cell.postItemImageView.sd_setImage(with: URL(string: imageUrl))
-            /*cell.postItemImageView.sd_setImage(with: URL(string: imageUrl)), completed: { (image, error, imageCacheType, imageUrl) in
+            //cell.postItemImageView.sd_setImage(with: URL(string: imageUrl))
+
+            cell.postItemImageView.sd_setImage(with: URL(string: imageUrl), completed: { (image, error, imageCacheType, imageUrl) in
+                
+                /*
+                if (paragraph.images[0].width == 0) {
+                
                 paragraph.images[0].height = 20
                 let mHeight = image?.size.height
                 let mWidth = image?.size.width
                 let newHeight = 320 * (mHeight! / mWidth!)
                 
                 paragraph.images[0].height = Int(newHeight)
+                    paragraph.images[0].width = 320
                 
-                cell.postItemImageView.frame = CGRect(x: 0, y: 0, width: 320, height: newHeight)
+                cell.postItemImageView.addConstraint(NSLayoutConstraint(item: cell.postItemImageView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.height, multiplier: 1, constant: newHeight))
+                
+                //cell.postItemImageView.frame = CGRect(x: 0, y: 0, width: 320, height: newHeight)
                 
                 //let constraint = NSLayoutConstraint(item: cell.postItemImageView, attribute: NSLayoutAttribute.height, relatedBy: <#T##NSLayoutRelation#>, toItem: <#T##Any?#>, attribute: <#T##NSLayoutAttribute#>, multiplier: <#T##CGFloat#>, constant: <#T##CGFloat#>)
                 
                 //cell.postItemImageView.addConstraint(constraint)
                 
-                print(newHeight)
-            })*/
+                //print(newHeight)
+                //tableView.beginUpdates()
+                //tableView.reloadRows(at: [indexPath], with: .none)
+                //tableView.endUpdates()
+                }
+ */
+            })
             
             return cell
         } else {
@@ -113,7 +128,7 @@ class PostItemViewController: UITableViewController {
         if paragraphs.count > indexPath.row {
             cell.label.text = paragraphs[indexPath.row].content
             
-            cell.webView.loadHTMLString(paragraphs[indexPath.row].content, baseURL: nil)
+            //cell.webView.loadHTMLString(paragraphs[indexPath.row].content, baseURL: nil)
             
             return cell
         }
