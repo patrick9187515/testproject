@@ -24,17 +24,21 @@ class BootListViewController: UITableViewController {
         }
     }
     @IBOutlet weak var textLabel: UILabel!
+    
+    var boots = [Boot]()
+    var page_0 = 1
+    var page_1 = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = "Boot Calendar"
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        tableView.register(UINib(nibName: "BootIndexView", bundle: nil),
+                           forCellReuseIdentifier: "BootIndexViewCell")
+        
+        //load data
+        loadBoots()
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,23 +50,61 @@ class BootListViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return boots.count
+    }
+    
+    func loadBoots() {
+        let url = "http://cdn.footyheadlines.com/_/api.php?type=boots&order=new&page=" + String(page_0)
+        
+        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: {(data, response, error) in
+            
+            guard error == nil else {
+                print("there is an error")
+                return
+            }
+            
+            guard data != nil else {
+                print("there is no data")
+                return
+            }
+            
+            if let jsonData = try? JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
+                
+                if let bootsArray = jsonData!.value(forKey: "boots") as? NSArray {
+                    for boot in bootsArray {
+                        if let postDict = boot as? NSDictionary {
+                            self.boots.append(Boot(
+                                brand: postDict.value(forKey: "brand") as! String,
+                                name: postDict.value(forKey: "name") as! String,
+                                collection: postDict.value(forKey: "collection") as! String,
+                                releasedate: postDict.value(forKey: "release_date") as! Date,
+                                notsure: postDict.value(forKey: "not_sure") as! String,
+                                url: postDict.value(forKey: "url") as! String,
+                                image: postDict.value(forKey: "image") as! String
+                            )!)
+                        }
+                    }
+                }
+            }
+            
+            OperationQueue.main.addOperation {
+                self.tableView.reloadData()
+            }
+        }).resume()
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BootIndexViewCell", for: indexPath)
 
         // Configure the cell...
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
