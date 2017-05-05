@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Post List View Controller-->
+        <!--News-->
         <scene sceneID="TMs-gN-l9M">
             <objects>
                 <tableViewController id="VyE-Pg-Opa" customClass="PostListViewController" customModule="TestProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,64 +36,84 @@
                             <outlet property="delegate" destination="VyE-Pg-Opa" id="8UE-Rd-SIP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Rq8-FQ-OfA"/>
+                    <navigationItem key="navigationItem" title="News" id="Rq8-FQ-OfA"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yYk-DD-lsR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="814" y="-278"/>
         </scene>
-        <!--Boot List View Controller-->
-        <scene sceneID="oxZ-Qp-fVN">
+        <!--Boot Calendar-->
+        <scene sceneID="1I7-DA-1hp">
             <objects>
-                <tableViewController id="S7F-Bl-wz7" customClass="BootListViewController" customModule="TestProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hu1-iS-Sa9">
+                <viewController title="Boot Calendar" id="psN-Ju-toJ" customClass="BootListViewController" customModule="TestProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fhU-GU-5zV"/>
+                        <viewControllerLayoutGuide type="bottom" id="x51-Vs-ijH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TXc-D2-xgN">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="lif-de-B98">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Upcoming"/>
-                                <segment title="Released"/>
-                            </segments>
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="indexChanged:" destination="S7F-Bl-wz7" eventType="valueChanged" id="js9-kD-ThL"/>
-                            </connections>
-                        </segmentedControl>
-                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rwp-Z1-5ZF">
-                            <rect key="frame" x="0.0" y="102" width="375" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hKm-uq-XeC">
-                                <rect key="frame" x="0.0" y="58" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hKm-uq-XeC" id="qiH-4h-NUD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJl-3R-Vzy">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" id="Wzj-o4-y3L">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="ata-Uz-bDZ">
+                                            <rect key="frame" x="16" y="7" width="375" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Upcoming"/>
+                                                <segment title="Released"/>
+                                            </segments>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="indexChanged:" destination="psN-Ju-toJ" eventType="valueChanged" id="J8m-3u-Cn4"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" red="1" green="0.53333333329999999" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <segue destination="L4U-0P-BPW" kind="show" identifier="ShowPost" id="xiZ-S9-TJJ"/>
+                                    <outlet property="delegate" destination="psN-Ju-toJ" id="sJ9-8i-nNN"/>
                                 </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="S7F-Bl-wz7" id="BbA-A6-AV9"/>
-                            <outlet property="delegate" destination="S7F-Bl-wz7" id="rlw-sz-BN3"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="Xlg-DU-kjA"/>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y3K-UV-OPH">
+                                <rect key="frame" x="0.0" y="44" width="375" height="510"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="tM6-Sx-bqa">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tM6-Sx-bqa" id="NlJ-6b-Gmc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="psN-Ju-toJ" id="QoH-iZ-Jho"/>
+                                    <outlet property="delegate" destination="psN-Ju-toJ" id="lRF-ph-QZ3"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JJl-3R-Vzy" firstAttribute="leading" secondItem="TXc-D2-xgN" secondAttribute="leading" id="89c-X7-DeR"/>
+                            <constraint firstItem="Y3K-UV-OPH" firstAttribute="top" secondItem="JJl-3R-Vzy" secondAttribute="bottom" id="LMo-Vj-ZaK"/>
+                            <constraint firstItem="x51-Vs-ijH" firstAttribute="top" secondItem="Y3K-UV-OPH" secondAttribute="bottom" id="P8v-bP-oqg"/>
+                            <constraint firstAttribute="trailing" secondItem="JJl-3R-Vzy" secondAttribute="trailing" id="dyx-BN-eCX"/>
+                            <constraint firstAttribute="right" secondItem="Y3K-UV-OPH" secondAttribute="right" id="hbj-gc-JB1"/>
+                            <constraint firstItem="Y3K-UV-OPH" firstAttribute="leading" secondItem="TXc-D2-xgN" secondAttribute="leading" id="ktG-bl-T92"/>
+                            <constraint firstItem="JJl-3R-Vzy" firstAttribute="top" secondItem="fhU-GU-5zV" secondAttribute="bottom" id="uY8-CZ-fYY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Boot Calendar" id="GVT-EQ-wN9"/>
                     <connections>
-                        <outlet property="segmentedControl" destination="lif-de-B98" id="wNn-we-4R3"/>
-                        <outlet property="textLabel" destination="Rwp-Z1-5ZF" id="tgW-hT-C4I"/>
+                        <outlet property="segmentedControl" destination="ata-Uz-bDZ" id="KdA-Q3-M5l"/>
+                        <outlet property="tableView" destination="Y3K-UV-OPH" id="ZRn-d1-xol"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="McW-pe-zAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fFT-rH-GSv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="814" y="394"/>
         </scene>
@@ -102,7 +122,7 @@
             <objects>
                 <tabBarController id="kT7-PX-0h7" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="kXG-Ob-25b"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="xp6-aV-FpS">
+                    <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="centered" id="xp6-aV-FpS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -154,7 +174,7 @@
         <scene sceneID="3kl-9n-bGp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wJ8-cj-cRF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="News" id="7R5-ZF-9CC"/>
+                    <tabBarItem key="tabBarItem" title="News" image="News-50" id="7R5-ZF-9CC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="zEp-7e-3rc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -232,16 +252,24 @@
         <scene sceneID="hwY-WW-2gM">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WE7-ur-NzT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Boot Calendar" id="Ici-XL-SQK"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Boot Calendar" image="Calendar-50" id="Ici-XL-SQK"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="BL9-rd-kLY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="BL9-rd-kLY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="1" green="0.53333333329999999" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="K64-sV-ic3">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
-                        <segue destination="S7F-Bl-wz7" kind="relationship" relationship="rootViewController" id="5k1-sk-aBC"/>
+                        <segue destination="psN-Ju-toJ" kind="relationship" relationship="rootViewController" id="ouE-fd-4Rv"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bf5-73-6Xg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -249,7 +277,9 @@
             <point key="canvasLocation" x="41" y="394"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="xiZ-S9-TJJ"/>
-    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="Calendar-50" width="25" height="25"/>
+        <image name="News-50" width="25" height="25"/>
+    </resources>
+    <color key="tintColor" red="1" green="0.53333333329999999" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -9,6 +9,9 @@
 import UIKit
 
 class BootIndexView: UITableViewCell {
+    @IBOutlet weak var bootImage: UIImageView!
+    @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var labelDate: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

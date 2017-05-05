@@ -33,6 +33,7 @@ class PostItemViewController: UITableViewController {
     @IBOutlet weak var postTitle: UILabel!
     
     var post : Post?
+    var url : String?
     var paragraphs = [Paragraph]()
 
     override func viewDidLoad() {
@@ -45,7 +46,7 @@ class PostItemViewController: UITableViewController {
         //postTitle.text = "test"
         //postTitle.text = post?.title
         
-        paragraphs = getParagraphs(content: (post?.content)!)
+        //paragraphs = getParagraphs(content: (post?.content)!)
         
         tableView.register(UINib(nibName: "PostItemText", bundle: nil),
                            forCellReuseIdentifier: "PostTextCell")

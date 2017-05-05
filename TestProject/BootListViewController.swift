@@ -8,37 +8,67 @@
 
 import UIKit
 
-class BootListViewController: UITableViewController {
+class BootListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var tableView: UITableView!
     @IBAction func indexChanged(_ sender: Any) {
         switch segmentedControl.selectedSegmentIndex
-        {
-        case 0:
-            //Upcoming
-            textLabel.text = "Upcoming boots"
-        case 1:
-            //Released
-            textLabel.text = "Released boots"
-        default:
-            break
+    {
+    case 0:
+        //Upcoming
+        boots = boots_new
+        tableView.reloadData()
+    case 1:
+        //Released
+        //Initial load if required
+        if (boots_old.count < 1) {
+            loadBoots()
+        }
+        boots = boots_old
+        tableView.reloadData()
+    default:
+        break
         }
     }
-    @IBOutlet weak var textLabel: UILabel!
     
-    var boots = [Boot]()
+    var boots = [Any?]()
+    var boots_new = [Any?]()
+    var boots_old = [Any?]()
+    var selectedBoot : Boot?
     var page_0 = 1
     var page_1 = 1
+    let dateFormatter = DateFormatter()
+    var dateFormatterToString = DateFormatter()
+    var initialLoad = true;
+    var selected = 0;
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "Boot Calendar"
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         tableView.register(UINib(nibName: "BootIndexView", bundle: nil),
                            forCellReuseIdentifier: "BootIndexViewCell")
         
+        tableView.rowHeight = 90
+        
         //load data
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatterToString.dateStyle = .medium
+        dateFormatterToString.locale = Locale(identifier: "en_US")
         loadBoots()
+        
+        //refresh
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        
+        //add to table view
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,17 +78,71 @@ class BootListViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //indexPath.row
+        
+        selectedBoot = boots[indexPath.row] as? Boot
+        
+        //let destinationVC = PostItemViewController()
+        //destinationVC.post = selectedPost
+        
+        //destinationVC.performSegue(withIdentifier: "ShowPost", sender: nil)
+        
+        self.performSegue(withIdentifier: "ShowPost", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! PostItemViewController
+        
+        destinationVC.url = selectedBoot?.url
+    }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //("called number of rows in section")
         return boots.count
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastElement = boots.count - 1
+        if indexPath.row >= lastElement {
+            switch segmentedControl.selectedSegmentIndex
+            {
+            case 0:
+                page_0 += 1
+                loadBoots()
+            case 1:
+                page_1 += 1
+                loadBoots()
+            default:
+                break
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return ""
+    }
+    
+    func refresh(_ refreshControl: UIRefreshControl) {
+        page_0 = 1
+        if (segmentedControl.selectedSegmentIndex == 0) {
+            boots_new = [Boot]()
+        } else if (segmentedControl.selectedSegmentIndex == 1) {
+            boots_old = [Boot]()
+        }
+        
+        loadBoots()
+        
+        refreshControl.endRefreshing()
+    }
+    
     func loadBoots() {
+        if (segmentedControl.selectedSegmentIndex == 0) {
         let url = "http://cdn.footyheadlines.com/_/api.php?type=boots&order=new&page=" + String(page_0)
         
         URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: {(data, response, error) in
@@ -78,17 +162,20 @@ class BootListViewController: UITableViewController {
                 if let bootsArray = jsonData!.value(forKey: "boots") as? NSArray {
                     for boot in bootsArray {
                         if let postDict = boot as? NSDictionary {
-                            self.boots.append(Boot(
+                            let date = self.dateFormatter.date(from: postDict.value(forKey: "release_date") as! String)
+                            self.boots_new.append(Boot(
                                 brand: postDict.value(forKey: "brand") as! String,
                                 name: postDict.value(forKey: "name") as! String,
                                 collection: postDict.value(forKey: "collection") as! String,
-                                releasedate: postDict.value(forKey: "release_date") as! Date,
+                                releasedate: date!,
                                 notsure: postDict.value(forKey: "not_sure") as! String,
                                 url: postDict.value(forKey: "url") as! String,
                                 image: postDict.value(forKey: "image") as! String
-                            )!)
+                                )!)
+                            self.boots_new.append(nil)
                         }
                     }
+                    self.boots = self.boots_new
                 }
             }
             
@@ -96,14 +183,71 @@ class BootListViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }).resume()
+        } else if (segmentedControl.selectedSegmentIndex == 1) {
+        let url_old = "http://cdn.footyheadlines.com/_/api.php?type=boots&order=old&page=" + String(page_1)
+        
+        URLSession.shared.dataTask(with: URL(string: url_old)!, completionHandler: {(data, response, error) in
+            
+            guard error == nil else {
+                print("there is an error")
+                return
+            }
+            
+            guard data != nil else {
+                print("there is no data")
+                return
+            }
+            
+            if let jsonData = try? JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
+                
+                if let bootsArray = jsonData!.value(forKey: "boots") as? NSArray {
+                    for boot in bootsArray {
+                        if let postDict = boot as? NSDictionary {
+                            let date = self.dateFormatter.date(from: postDict.value(forKey: "release_date") as! String)
+                            self.boots_old.append(Boot(
+                                brand: postDict.value(forKey: "brand") as! String,
+                                name: postDict.value(forKey: "name") as! String,
+                                collection: postDict.value(forKey: "collection") as! String,
+                                releasedate: date!,
+                                notsure: postDict.value(forKey: "not_sure") as! String,
+                                url: postDict.value(forKey: "url") as! String,
+                                image: postDict.value(forKey: "image") as! String
+                                )!)
+                        }
+                    }
+                    self.boots = self.boots_old
+                }
+            }
+            
+            OperationQueue.main.addOperation {
+                self.tableView.reloadData()
+            }
+        }).resume()
+        }
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BootIndexViewCell", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        //print(indexPath.row)
+        //print(boots.count)
+        
+        if (boots.count > indexPath.row) {
+            if boots[indexPath.row] != nil {
+                let temp = boots[indexPath.row] as? Boot
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "BootIndexViewCell", for: indexPath) as! BootIndexView
+                
+                cell.bootImage?.sd_setImage(with: URL(string: (temp?.image)!))
+                cell.labelName?.text = (temp?.brand)! + " " + (temp?.name)!
+                let labelDateText = dateFormatterToString.string(from: (temp?.release_date)!)
+                cell.labelDate?.text = labelDateText
+                
+                return cell
+            } else {
+                return UITableViewCell()
+            }
+        }
+        return UITableViewCell()
     }
 
     /*

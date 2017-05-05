@@ -29,8 +29,6 @@ class PostListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "Footy Headlines"
-        
         tableView.register(UINib(nibName: "PostIndexView", bundle: nil),
                            forCellReuseIdentifier: "PostIndexViewCell")
         tableView.register(UINib(nibName: "PostIndexZZZView", bundle: nil),
