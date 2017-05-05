@@ -16,18 +16,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="130.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kli-98-uKZ">
-                        <rect key="frame" x="8" y="8" width="114" height="114.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Kli-98-uKZ" secondAttribute="height" multiplier="1:1" id="g2a-Uq-Idg"/>
                             <constraint firstAttribute="width" priority="999" constant="100" id="xpq-Mz-SkV"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wli-ci-hCL">
-                        <rect key="frame" x="137" y="55" width="175" height="21"/>
+                        <rect key="frame" x="138" y="55" width="174" height="21"/>
                         <attributedString key="attributedText">
                             <fragment content="TEST">
                                 <attributes>
@@ -40,11 +40,11 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="Kli-98-uKZ" secondAttribute="bottom" id="KgV-Sl-sqV"/>
+                    <constraint firstAttribute="bottom" secondItem="Kli-98-uKZ" secondAttribute="bottom" id="KgV-Sl-sqV"/>
                     <constraint firstItem="wli-ci-hCL" firstAttribute="centerY" secondItem="Kli-98-uKZ" secondAttribute="centerY" id="QCG-wX-xiT"/>
-                    <constraint firstItem="Kli-98-uKZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="bF3-f2-0Ue"/>
-                    <constraint firstItem="wli-ci-hCL" firstAttribute="leading" secondItem="Kli-98-uKZ" secondAttribute="trailing" constant="15" id="jll-8j-Ibx"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="Kli-98-uKZ" secondAttribute="leading" id="kGc-G5-bft"/>
+                    <constraint firstItem="Kli-98-uKZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="bF3-f2-0Ue"/>
+                    <constraint firstItem="wli-ci-hCL" firstAttribute="leading" secondItem="Kli-98-uKZ" secondAttribute="trailing" constant="8" id="jll-8j-Ibx"/>
+                    <constraint firstAttribute="left" secondItem="Kli-98-uKZ" secondAttribute="left" id="kGc-G5-bft"/>
                     <constraint firstAttribute="trailingMargin" secondItem="wli-ci-hCL" secondAttribute="trailing" id="qQJ-Zo-4VG"/>
                 </constraints>
             </tableViewCellContentView>

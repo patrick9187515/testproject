@@ -22,7 +22,7 @@ class PostTableViewCell: UITableViewCell {
 }
 
 class PostListViewController: UITableViewController {
-    var posts2 = [Post]()
+    var posts2 = [Any?]()
     var page = 1
     var selectedPost : Post?
     
@@ -33,6 +33,8 @@ class PostListViewController: UITableViewController {
                            forCellReuseIdentifier: "PostIndexViewCell")
         tableView.register(UINib(nibName: "PostIndexZZZView", bundle: nil),
                             forCellReuseIdentifier: "PostZZZIndexViewCell")
+        tableView.register(UINib(nibName: "SeperatorTableViewCell", bundle: nil),
+                           forCellReuseIdentifier: "Seperator")
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
@@ -55,7 +57,7 @@ class PostListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //indexPath.row
         
-        selectedPost = posts2[indexPath.row]
+        if let selectedPost = posts2[indexPath.row] as? Post {
         
         //let destinationVC = PostItemViewController()
         //destinationVC.post = selectedPost
@@ -63,6 +65,7 @@ class PostListViewController: UITableViewController {
         //destinationVC.performSegue(withIdentifier: "ShowPost", sender: nil)
         
         self.performSegue(withIdentifier: "ShowPost", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -88,15 +91,16 @@ class PostListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let post = posts2[indexPath.row]
+        if (posts2[indexPath.row] != nil) {
+        let post = posts2[indexPath.row] as! Post
         
         if (post.zzz == 0) {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostIndexViewCell", for: indexPath) as! PostIndexView
         
         if posts2.count > indexPath.row {
-        cell.headerImage?.sd_setImage(with: URL(string: posts2[indexPath.row].image))
-        cell.label?.text = posts2[indexPath.row].title
+        cell.headerImage?.sd_setImage(with: URL(string: post.image))
+        cell.label?.text = post.title
         }
         
         return cell
@@ -104,13 +108,17 @@ class PostListViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostZZZIndexViewCell", for: indexPath) as! PostIndexZZZView
             
             if posts2.count > indexPath.row {
-                cell.headerImage?.sd_setImage(with: URL(string: posts2[indexPath.row].imageSquare))
-                cell.title?.text = posts2[indexPath.row].title
+                cell.headerImage?.sd_setImage(with: URL(string: post.imageSquare))
+                cell.title?.text = post.title
                 }
             
             return cell
         }
-        return UITableViewCell()
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Seperator", for: indexPath)
+            
+            return cell
+        }
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -162,6 +170,7 @@ class PostListViewController: UITableViewController {
                                 content: postDict.value(forKey: "content") as! String,
                                 zzz: Int(postDict.value(forKey: "ZZZ") as! String)!)!)
                         }
+                        self.posts2.append(nil)
                     }
                 }
             }

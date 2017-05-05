@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3134DDC2934E2FDFEE4CB1FC /* Pods_TestProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28E6AC16E7F66230EAB9112F /* Pods_TestProjectTests.framework */; };
+		430D37771EBD185A00CF64EE /* SeperatorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 430D37761EBD185A00CF64EE /* SeperatorTableViewCell.xib */; };
 		4324CA341E978FDA005D82FF /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324CA331E978FDA005D82FF /* PostListViewController.swift */; };
 		4324CA361E97D5EE005D82FF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324CA351E97D5EE005D82FF /* Post.swift */; };
 		432BF58C1EA642820055BEE6 /* Ad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 432BF58A1EA642820055BEE6 /* Ad.xib */; };
@@ -58,6 +59,7 @@
 		0513C1075E1BC8C2A78AAF14 /* Pods-TestProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestProjectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestProjectUITests/Pods-TestProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		28E6AC16E7F66230EAB9112F /* Pods_TestProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B17B6F08631AA47EA5C293 /* Pods-TestProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestProjectTests/Pods-TestProjectTests.release.xcconfig"; sourceTree = "<group>"; };
+		430D37761EBD185A00CF64EE /* SeperatorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeperatorTableViewCell.xib; sourceTree = "<group>"; };
 		4324CA331E978FDA005D82FF /* PostListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		4324CA351E97D5EE005D82FF /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		432BF58A1EA642820055BEE6 /* Ad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Ad.xib; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				43EE84B41EBBA6A700B9F45D /* BootIndexView.swift */,
 				43EE84B51EBBA6A700B9F45D /* BootIndexView.xib */,
 				43EE84B81EBBADA100B9F45D /* Boot.swift */,
+				430D37761EBD185A00CF64EE /* SeperatorTableViewCell.xib */,
 			);
 			path = TestProject;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				43EA68571E95365D00B94683 /* Assets.xcassets in Resources */,
 				433380441EA90FC7006E41D3 /* PostItemText.xib in Resources */,
 				4359EE601EB0A87300BCA43D /* PostIndexZZZView.xib in Resources */,
+				430D37771EBD185A00CF64EE /* SeperatorTableViewCell.xib in Resources */,
 				43EE84B71EBBA6A700B9F45D /* BootIndexView.xib in Resources */,
 				43EA68551E95365D00B94683 /* Main.storyboard in Resources */,
 				4333804A1EA9182B006E41D3 /* PostItemImage.xib in Resources */,
@@ -677,7 +681,7 @@
 				INFOPLIST_FILE = TestProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.footyheadlines.TestProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.footyheadlines.FootyHeadlines;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -692,7 +696,7 @@
 				INFOPLIST_FILE = TestProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.footyheadlines.TestProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.footyheadlines.FootyHeadlines;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

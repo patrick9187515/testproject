@@ -50,8 +50,12 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
         
         tableView.register(UINib(nibName: "BootIndexView", bundle: nil),
                            forCellReuseIdentifier: "BootIndexViewCell")
+        tableView.register(UINib(nibName: "SeperatorTableViewCell", bundle: nil),
+                           forCellReuseIdentifier: "Seperator")
         
-        tableView.rowHeight = 90
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 90
         
         //load data
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -121,6 +125,14 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
             default:
                 break
             }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (boots[indexPath.row] != nil) {
+            return 90
+        } else {
+            return UITableViewAutomaticDimension
         }
     }
     
@@ -244,7 +256,7 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 return cell
             } else {
-                return UITableViewCell()
+                return tableView.dequeueReusableCell(withIdentifier: "Seperator", for: indexPath)
             }
         }
         return UITableViewCell()

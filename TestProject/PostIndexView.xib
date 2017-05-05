@@ -16,20 +16,20 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="299.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="299"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZWh-sb-f1s">
-                        <rect key="frame" x="8" y="8" width="304" height="156"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="164"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ZWh-sb-f1s" secondAttribute="height" multiplier="400:205" id="whW-1Z-41F"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTC-aE-Q80">
-                        <rect key="frame" x="8" y="164" width="304" height="127.5"/>
+                        <rect key="frame" x="0.0" y="164" width="320" height="135"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lwh-0B-QLN">
-                                <rect key="frame" x="10" y="10.5" width="284" height="107.5"/>
+                                <rect key="frame" x="10" y="10" width="300" height="115"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Test Header">
                                         <attributes>
@@ -53,12 +53,12 @@
                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 <constraints>
                     <constraint firstItem="gTC-aE-Q80" firstAttribute="top" secondItem="ZWh-sb-f1s" secondAttribute="bottom" id="DPL-eX-ejP"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="ZWh-sb-f1s" secondAttribute="leading" id="ckR-0r-n03"/>
-                    <constraint firstAttribute="topMargin" secondItem="ZWh-sb-f1s" secondAttribute="top" id="csv-VW-cy1"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="gTC-aE-Q80" secondAttribute="trailing" id="i9O-NW-dmc"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="ZWh-sb-f1s" secondAttribute="trailing" id="lWZ-dE-B1w"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="gTC-aE-Q80" secondAttribute="bottom" id="uR1-SJ-iFU"/>
-                    <constraint firstItem="gTC-aE-Q80" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="v6h-pw-bEa"/>
+                    <constraint firstAttribute="left" secondItem="ZWh-sb-f1s" secondAttribute="left" id="ckR-0r-n03"/>
+                    <constraint firstAttribute="top" secondItem="ZWh-sb-f1s" secondAttribute="top" id="csv-VW-cy1"/>
+                    <constraint firstAttribute="right" secondItem="gTC-aE-Q80" secondAttribute="right" id="i9O-NW-dmc"/>
+                    <constraint firstAttribute="right" secondItem="ZWh-sb-f1s" secondAttribute="right" id="lWZ-dE-B1w"/>
+                    <constraint firstAttribute="bottom" secondItem="gTC-aE-Q80" secondAttribute="bottom" id="uR1-SJ-iFU"/>
+                    <constraint firstItem="gTC-aE-Q80" firstAttribute="leftMargin" secondItem="H2p-sc-9uM" secondAttribute="leftMargin" id="v6h-pw-bEa"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
