@@ -9,6 +9,7 @@
 import UIKit
 import SDWebImage
 import Firebase
+import GoogleMobileAds
 
 class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
@@ -21,8 +22,12 @@ class PostTableViewCell: UITableViewCell {
     }
 }
 
-class PostListViewController: UITableViewController {
+class PostListViewController: UITableViewController, GADNativeExpressAdViewDelegate {
     var posts2 = [Any?]()
+    var adsToLoad = [GADNativeExpressAdView]()
+    let adViewHeight = CGFloat(300)
+    let adViewWidth = CGFloat(320)
+    let numberOfAds = 3
     var page = 1
     var selectedPost : Post?
     
@@ -32,9 +37,12 @@ class PostListViewController: UITableViewController {
         tableView.register(UINib(nibName: "PostIndexView", bundle: nil),
                            forCellReuseIdentifier: "PostIndexViewCell")
         tableView.register(UINib(nibName: "PostIndexZZZView", bundle: nil),
-                            forCellReuseIdentifier: "PostZZZIndexViewCell")
+                           forCellReuseIdentifier: "PostZZZIndexViewCell")
         tableView.register(UINib(nibName: "SeperatorTableViewCell", bundle: nil),
                            forCellReuseIdentifier: "Seperator")
+        tableView.register(UINib(nibName: "NativeExpressAd", bundle: nil),
+                           forCellReuseIdentifier: "NativeExpressAdViewCell")
+        
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
@@ -54,10 +62,33 @@ class PostListViewController: UITableViewController {
         }
     }
     
+    func loadNextAd() {
+        if !adsToLoad.isEmpty {
+            let adView = adsToLoad.removeFirst()
+            adView.load(GADRequest())
+        }
+    }
+    
+    func addAds() {
+        let adSize = GADAdSizeFromCGSize(CGSize(width: adViewWidth, height: adViewHeight))
+        var adCount = 0
+        while (adCount < numberOfAds) {
+             let adView = GADNativeExpressAdView(adSize: adSize)
+             adView?.adUnitID = "ca-app-pub-3940256099942544/8897359316"
+             adView?.rootViewController = self
+             adView?.delegate = self
+             posts2.insert(adView!, at: (2 + adCount * 4))
+            posts2.insert(nil, at: (3 + adCount * 4))
+             adsToLoad.append(adView!)
+             adCount += 1
+        }
+        loadNextAd()
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //indexPath.row
         
-        if let selectedPost = posts2[indexPath.row] as? Post {
+        if (posts2[indexPath.row] as? Post) != nil {
         
         //let destinationVC = PostItemViewController()
         //destinationVC.post = selectedPost
@@ -75,6 +106,11 @@ class PostListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if posts2[indexPath.row] as? GADNativeExpressAdView != nil {
+            return adViewHeight
+        }
+        
         return UITableViewAutomaticDimension
     }
     
@@ -91,8 +127,9 @@ class PostListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if posts2.count > indexPath.row {
         if (posts2[indexPath.row] != nil) {
-        let post = posts2[indexPath.row] as! Post
+            if let post = posts2[indexPath.row] as? Post {
         
         if (post.zzz == 0) {
         
@@ -114,11 +151,23 @@ class PostListViewController: UITableViewController {
             
             return cell
         }
+            } else {
+                let adView = posts2[indexPath.row] as! GADNativeExpressAdView
+                let cell = tableView.dequeueReusableCell(withIdentifier: "NativeExpressAdViewCell", for: indexPath)
+                for subview in cell.contentView.subviews {
+                    subview.removeFromSuperview()
+                }
+                cell.contentView.addSubview(adView)
+                adView.center = cell.contentView.center
+                return cell
+            }
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Seperator", for: indexPath)
             
             return cell
         }
+        }
+        return UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -136,7 +185,7 @@ class PostListViewController: UITableViewController {
     
     func refresh(_ refreshControl: UIRefreshControl) {
         page = 1
-        posts2 = [Post]()
+        posts2 = [AnyObject?]()
         
         loadPosts()
         
@@ -168,7 +217,7 @@ class PostListViewController: UITableViewController {
                                 title: postDict.value(forKey: "title") as! String,
                                 image: postDict.value(forKey: "image") as! String,
                                 content: postDict.value(forKey: "content") as! String,
-                                zzz: Int(postDict.value(forKey: "ZZZ") as! String)!)!)
+                                zzz: 0))//Int(postDict.value(forKey: "ZZZ") as! String)!))
                         }
                         self.posts2.append(nil)
                     }
@@ -176,9 +225,14 @@ class PostListViewController: UITableViewController {
             }
             
             OperationQueue.main.addOperation {
+                self.addAds()
                 self.tableView.reloadData()
             }
         }).resume()
+    }
+    
+    func nativeExpressAdViewDidReceiveAd(_ nativeExpressAdView: GADNativeExpressAdView) {
+        loadNextAd()
     }
 
     override func didReceiveMemoryWarning() {

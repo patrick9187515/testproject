@@ -16,21 +16,28 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
     {
     case 0:
         //Upcoming
+        /*
         scroll_old = tableView.contentOffset.y
+        let offset = tableView.contentOffset
+        tableView.setContentOffset(offset, animated: false)
+         */
+        tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
         boots = boots_new
         tableView.reloadData()
-        tableView.setContentOffset(CGPoint(x: 0, y: scroll_new), animated: false)
     case 1:
         //Released
+        /*
         scroll_new = tableView.contentOffset.y
+        let offset = tableView.contentOffset
+        tableView.setContentOffset(offset, animated: false)
         //Initial load if required
+         */
+        tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
         if (boots_old.count < 1) {
             loadBoots()
         }
         boots = boots_old
         tableView.reloadData()
-        tableView.setContentOffset(CGPoint(x: 0, y: scroll_old), animated: false)
-        
     default:
         break
         }
@@ -49,7 +56,12 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
     var selected = 0;
     var scroll_new = CGFloat(0);
     var scroll_old = CGFloat(0);
-
+    var previousTabBarIndex = 1;
+    var previousMonth_new = ""
+    var previousCollection_new = ""
+    var previousMonth_old = ""
+    var previousCollection_old = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,6 +74,10 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
                            forCellReuseIdentifier: "BootIndexViewCell")
         tableView.register(UINib(nibName: "SeperatorTableViewCell", bundle: nil),
                            forCellReuseIdentifier: "Seperator")
+        tableView.register(UINib(nibName: "DateHeaderTableViewCell", bundle: nil),
+                           forCellReuseIdentifier: "DateHeader")
+        tableView.register(UINib(nibName: "CollectionHeaderTableViewCell", bundle: nil),
+                           forCellReuseIdentifier: "CollectionHeader")
         
         
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -88,8 +104,9 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
-        if (tabBarIndex == 1) {
-            tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        if (tabBarIndex == 1 && previousTabBarIndex == 1) {
+            //tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            previousTabBarIndex = tabBarIndex
         }
     }
 
@@ -155,11 +172,12 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func refresh(_ refreshControl: UIRefreshControl) {
-        page_0 = 1
         if (segmentedControl.selectedSegmentIndex == 0) {
-            boots_new = [Boot]()
+            page_0 = 1
+            boots = [Boot]()
         } else if (segmentedControl.selectedSegmentIndex == 1) {
-            boots_old = [Boot]()
+            page_1 = 1
+            boots = [Boot]()
         }
         
         loadBoots()
@@ -188,20 +206,22 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
                 if let bootsArray = jsonData!.value(forKey: "boots") as? NSArray {
                     for boot in bootsArray {
                         if let postDict = boot as? NSDictionary {
-                            let date = self.dateFormatter.date(from: postDict.value(forKey: "release_date") as! String)
-                            self.boots_new.append(Boot(
-                                brand: postDict.value(forKey: "brand") as! String,
-                                name: postDict.value(forKey: "name") as! String,
-                                collection: postDict.value(forKey: "collection") as! String,
-                                releasedate: date!,
-                                notsure: postDict.value(forKey: "not_sure") as! String,
-                                url: postDict.value(forKey: "url") as! String,
-                                image: postDict.value(forKey: "image") as! String
-                                )!)
-                            self.boots_new.append(nil)
+                            if let tempBoot = Boot(postDict: postDict) {
+                                let month = self.dateFormatterMonth.string(from: tempBoot.release_date)
+                                if month != self.previousMonth_new {
+                                    self.boots.append(DateHeader(name: month))
+                                    self.previousMonth_new = month
+                                }
+                                if tempBoot.collection != self.previousCollection_new && !tempBoot.collection.isEmpty {
+                                    self.boots.append(CollectionHeader(name: tempBoot.collection))
+                                    self.previousCollection_new = tempBoot.collection
+                                }
+                                self.boots.append(tempBoot)
+                                self.boots.append(nil)
+                            }
                         }
                     }
-                    self.boots = self.boots_new
+                    self.boots_new = self.boots
                 }
             }
             
@@ -229,10 +249,22 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
                 if let bootsArray = jsonData!.value(forKey: "boots") as? NSArray {
                     for boot in bootsArray {
                         if let postDict = boot as? NSDictionary {
-                            self.boots_old.append(Boot(postDict: postDict))
+                            if let tempBoot = Boot(postDict: postDict) {
+                                let month = self.dateFormatterMonth.string(from: tempBoot.release_date)
+                                if month != self.previousMonth_old {
+                                    self.boots.append(DateHeader(name: month))
+                                    self.previousMonth_old = month
+                                }
+                                if tempBoot.collection != self.previousCollection_old && !tempBoot.collection.isEmpty {
+                                    self.boots.append(CollectionHeader(name: tempBoot.collection))
+                                    self.previousCollection_old = tempBoot.collection
+                                }
+                                self.boots.append(tempBoot)
+                                self.boots.append(nil)
+                            }
                         }
                     }
-                    self.boots = self.boots_old
+                    self.boots_old = self.boots
                 }
             }
             
@@ -250,37 +282,28 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
         
         if (boots.count > indexPath.row) {
             if boots[indexPath.row] != nil {
-                let temp = boots[indexPath.row] as? Boot
+                if let temp = boots[indexPath.row] as? Boot {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "BootIndexViewCell", for: indexPath) as! BootIndexView
-                
-                //if first of month - make date header visible
-                if indexPath.row == 0 {
-                    cell.labelMonth?.text = dateFormatterMonth.string(from: (temp?.release_date)!)
-                } else {
-                    if let previousBoot = boots[indexPath.row-2] as? Boot {
-                    if dateFormatterMonth.string(from: previousBoot.release_date) != dateFormatterMonth.string(from: temp!.release_date) {
-                        cell.labelMonth?.text = dateFormatterMonth.string(from: (temp?.release_date)!)
-                        cell.labelMonthHeight?.constant = 36
-                    } else{
-                        cell.labelMonthHeight?.constant = 0
-                    }
-                    }
-                }
-                
-                // || dateFormatterMonth.string(from: (boots[indexPath.row-1].release_date)!) == dateFormatterMonth.string(from: (temp?.release_date)!)
-                
-                /*
-                cell.labelCollectionHeight?.constant = 0
-                cell.labelCollectionDistance?.constant = 0
-                cell.labelMonthHeight?.constant = 0
- */
-                cell.bootImage?.sd_setImage(with: URL(string: (temp?.image)!))
-                cell.labelName?.text = (temp?.brand)! + " " + (temp?.name)!
-                let labelDateText = dateFormatterToString.string(from: (temp?.release_date)!)
+                cell.bootImage?.sd_setImage(with: URL(string: (temp.image)))
+                cell.labelName?.text = (temp.brand) + " " + (temp.name)
+                let labelDateText = dateFormatterToString.string(from: (temp.release_date))
                 cell.labelDate?.text = labelDateText
                 
                 return cell
+                } else if let row = boots[indexPath.row] as? DateHeader {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "DateHeader", for: indexPath) as! DateHeaderTableViewCell
+                    
+                    cell.label.text = row.title
+                    
+                    return cell
+                } else if let row = boots[indexPath.row] as? CollectionHeader {
+                    let cell =  tableView.dequeueReusableCell(withIdentifier: "CollectionHeader", for: indexPath) as! CollectionHeaderTableViewCell
+                    
+                    cell.label.text = row.title
+                    
+                    return cell
+                }
             } else {
                 return tableView.dequeueReusableCell(withIdentifier: "Seperator", for: indexPath)
             }

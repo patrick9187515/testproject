@@ -54,3 +54,23 @@ extension Boot {
     self.image = postDict.value(forKey: "image") as! String
     }
 }
+
+struct DateHeader {
+    let title: String
+}
+
+extension DateHeader {
+    init?(name: String) {
+        self.title = name
+    }
+}
+
+struct CollectionHeader {
+    let title: String
+}
+
+extension CollectionHeader {
+    init?(name: String) {
+        self.title = name
+    }
+}

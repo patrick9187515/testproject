@@ -1,17 +1,15 @@
 //
-//  BootIndexView.swift
+//  CollectionHeaderTableViewCell.swift
 //  TestProject
 //
-//  Created by pat t on 5/4/17.
+//  Created by pat t on 5/6/17.
 //  Copyright © 2017 Footy Headlines. All rights reserved.
 //
 
 import UIKit
 
-class BootIndexView: UITableViewCell {
-    @IBOutlet weak var bootImage: UIImageView!
-    @IBOutlet weak var labelName: UILabel!
-    @IBOutlet weak var labelDate: UILabel!
+class CollectionHeaderTableViewCell: UITableViewCell {
+    @IBOutlet weak var label: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
