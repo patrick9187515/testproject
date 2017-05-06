@@ -8,6 +8,8 @@
 
 import Foundation
 
+let dateFormatter = DateFormatter()
+
 struct Boot {
     let brand: String
     let name: String
@@ -33,5 +35,22 @@ extension Boot {
         self.not_sure = notsure
         self.url = url
         self.image = image
+    }
+}
+
+extension Boot {
+    init?(postDict: NSDictionary) {
+        
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+    let date = dateFormatter.date(from: postDict.value(forKey: "release_date") as! String)
+    
+    self.brand = postDict.value(forKey: "brand") as! String
+    self.name = postDict.value(forKey: "name") as! String
+    self.collection = postDict.value(forKey: "collection") as! String
+    self.release_date = date!
+    self.not_sure = postDict.value(forKey: "not_sure") as! String
+    self.url = postDict.value(forKey: "url") as! String
+    self.image = postDict.value(forKey: "image") as! String
     }
 }

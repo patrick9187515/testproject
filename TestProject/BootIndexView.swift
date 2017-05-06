@@ -9,6 +9,11 @@
 import UIKit
 
 class BootIndexView: UITableViewCell {
+    @IBOutlet weak var labelMonth: UILabel!
+    @IBOutlet weak var labelMonthHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelCollection: UILabel!
+    @IBOutlet weak var labelCollectionHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelCollectionDistance: NSLayoutConstraint!
     @IBOutlet weak var bootImage: UIImageView!
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var labelDate: UILabel!

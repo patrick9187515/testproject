@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BootListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class BootListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     @IBAction func indexChanged(_ sender: Any) {
@@ -16,16 +16,21 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
     {
     case 0:
         //Upcoming
+        scroll_old = tableView.contentOffset.y
         boots = boots_new
         tableView.reloadData()
+        tableView.setContentOffset(CGPoint(x: 0, y: scroll_new), animated: false)
     case 1:
         //Released
+        scroll_new = tableView.contentOffset.y
         //Initial load if required
         if (boots_old.count < 1) {
             loadBoots()
         }
         boots = boots_old
         tableView.reloadData()
+        tableView.setContentOffset(CGPoint(x: 0, y: scroll_old), animated: false)
+        
     default:
         break
         }
@@ -39,11 +44,16 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
     var page_1 = 1
     let dateFormatter = DateFormatter()
     var dateFormatterToString = DateFormatter()
+    var dateFormatterMonth = DateFormatter()
     var initialLoad = true;
     var selected = 0;
+    var scroll_new = CGFloat(0);
+    var scroll_old = CGFloat(0);
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBarController?.delegate = self
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -59,6 +69,7 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
         
         //load data
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatterMonth.dateFormat = "MMM yyyy"
         dateFormatterToString.dateStyle = .medium
         dateFormatterToString.locale = Locale(identifier: "en_US")
         loadBoots()
@@ -72,6 +83,13 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
             tableView.refreshControl = refreshControl
         } else {
             tableView.addSubview(refreshControl)
+        }
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        if (tabBarIndex == 1) {
+            tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         }
     }
 
@@ -129,11 +147,7 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (boots[indexPath.row] != nil) {
-            return 90
-        } else {
             return UITableViewAutomaticDimension
-        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -215,16 +229,7 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
                 if let bootsArray = jsonData!.value(forKey: "boots") as? NSArray {
                     for boot in bootsArray {
                         if let postDict = boot as? NSDictionary {
-                            let date = self.dateFormatter.date(from: postDict.value(forKey: "release_date") as! String)
-                            self.boots_old.append(Boot(
-                                brand: postDict.value(forKey: "brand") as! String,
-                                name: postDict.value(forKey: "name") as! String,
-                                collection: postDict.value(forKey: "collection") as! String,
-                                releasedate: date!,
-                                notsure: postDict.value(forKey: "not_sure") as! String,
-                                url: postDict.value(forKey: "url") as! String,
-                                image: postDict.value(forKey: "image") as! String
-                                )!)
+                            self.boots_old.append(Boot(postDict: postDict))
                         }
                     }
                     self.boots = self.boots_old
@@ -249,6 +254,27 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "BootIndexViewCell", for: indexPath) as! BootIndexView
                 
+                //if first of month - make date header visible
+                if indexPath.row == 0 {
+                    cell.labelMonth?.text = dateFormatterMonth.string(from: (temp?.release_date)!)
+                } else {
+                    if let previousBoot = boots[indexPath.row-2] as? Boot {
+                    if dateFormatterMonth.string(from: previousBoot.release_date) != dateFormatterMonth.string(from: temp!.release_date) {
+                        cell.labelMonth?.text = dateFormatterMonth.string(from: (temp?.release_date)!)
+                        cell.labelMonthHeight?.constant = 36
+                    } else{
+                        cell.labelMonthHeight?.constant = 0
+                    }
+                    }
+                }
+                
+                // || dateFormatterMonth.string(from: (boots[indexPath.row-1].release_date)!) == dateFormatterMonth.string(from: (temp?.release_date)!)
+                
+                /*
+                cell.labelCollectionHeight?.constant = 0
+                cell.labelCollectionDistance?.constant = 0
+                cell.labelMonthHeight?.constant = 0
+ */
                 cell.bootImage?.sd_setImage(with: URL(string: (temp?.image)!))
                 cell.labelName?.text = (temp?.brand)! + " " + (temp?.name)!
                 let labelDateText = dateFormatterToString.string(from: (temp?.release_date)!)

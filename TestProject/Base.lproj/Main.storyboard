@@ -127,6 +127,11 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="1" green="0.53333333329999999" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.53333333333333333" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="wJ8-cj-cRF" kind="relationship" relationship="viewControllers" id="i0x-zy-1ip"/>
@@ -254,7 +259,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WE7-ur-NzT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="Boot Calendar" image="Calendar-50" id="Ici-XL-SQK"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="BL9-rd-kLY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="BL9-rd-kLY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
