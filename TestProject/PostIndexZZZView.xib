@@ -23,19 +23,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Kli-98-uKZ" secondAttribute="height" multiplier="1:1" id="g2a-Uq-Idg"/>
-                            <constraint firstAttribute="width" priority="999" constant="100" id="xpq-Mz-SkV"/>
+                            <constraint firstAttribute="width" priority="999" constant="70" id="xpq-Mz-SkV"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wli-ci-hCL">
-                        <rect key="frame" x="138" y="55" width="174" height="21"/>
-                        <attributedString key="attributedText">
-                            <fragment content="TEST">
-                                <attributes>
-                                    <font key="NSFont" metaFont="system" size="17"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEST" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wli-ci-hCL">
+                        <rect key="frame" x="138" y="57" width="174" height="16"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                        <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>

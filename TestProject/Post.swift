@@ -23,7 +23,7 @@ struct Post {
 }
 
 extension Post {
-    init?(url: String, title: String, image: String, content: String, zzz: Int) {
+    init?(url: String, title: String, image: String, content: String, zzz: Int, commentCount: Int, ageLabel: String) {
         guard let title = title as? String,
         let image = image as? String
             else {
@@ -37,9 +37,9 @@ extension Post {
         self.timestamp = Date()
         self.image = image
         self.imageSquare = image
-        self.commentCount = 0
+        self.commentCount = commentCount
         self.labels = ""
-        self.ageLabel = ""
+        self.ageLabel = ageLabel
         self.zzz = zzz
     }
 }

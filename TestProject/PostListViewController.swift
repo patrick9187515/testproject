@@ -28,6 +28,7 @@ class PostListViewController: UITableViewController, GADNativeExpressAdViewDeleg
     let adViewHeight = CGFloat(300)
     let adViewWidth = CGFloat(320)
     let numberOfAds = 3
+    var adCount = 0
     var page = 1
     var selectedPost : Post?
     
@@ -71,7 +72,6 @@ class PostListViewController: UITableViewController, GADNativeExpressAdViewDeleg
     
     func addAds() {
         let adSize = GADAdSizeFromCGSize(CGSize(width: adViewWidth, height: adViewHeight))
-        var adCount = 0
         while (adCount < numberOfAds) {
              let adView = GADNativeExpressAdView(adSize: adSize)
              adView?.adUnitID = "ca-app-pub-3940256099942544/8897359316"
@@ -134,11 +134,18 @@ class PostListViewController: UITableViewController, GADNativeExpressAdViewDeleg
         if (post.zzz == 0) {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostIndexViewCell", for: indexPath) as! PostIndexView
+        var commentText = (String)(post.commentCount)
+            
+            if post.commentCount == 1 {
+                commentText += " comment"
+            } else {
+                commentText += " comments"
+            }
         
-        if posts2.count > indexPath.row {
         cell.headerImage?.sd_setImage(with: URL(string: post.image))
         cell.label?.text = post.title
-        }
+            cell.labelCommentCount?.text = commentText
+            cell.labelTime?.text = post.ageLabel
         
         return cell
         } else {
@@ -185,6 +192,7 @@ class PostListViewController: UITableViewController, GADNativeExpressAdViewDeleg
     
     func refresh(_ refreshControl: UIRefreshControl) {
         page = 1
+        adCount = 0
         posts2 = [AnyObject?]()
         
         loadPosts()
@@ -208,16 +216,38 @@ class PostListViewController: UITableViewController, GADNativeExpressAdViewDeleg
             }
             
             if let jsonData = try? JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                dateFormatter.timeZone = TimeZone(abbreviation: "CET")
+                let displayFormat = DateFormatter()
+                displayFormat.dateFormat = "MMMM dd, yyyy"
                 
                 if let postsArray = jsonData!.value(forKey: "posts") as? NSArray {
                     for post in postsArray {
                         if let postDict = post as? NSDictionary {
+                            var ageString = ""
+                            let published = postDict.value(forKey: "published") as! String
+                            let date = dateFormatter.date(from: published)
+                            let now = Date()
+                            let diff = Calendar.current.dateComponents([.minute], from: date!, to: now).minute!
+                            if (diff < 60) {
+                                ageString = (String)(diff) + "m"
+                            } else if (diff < (60 * 24)) {
+                                ageString = (String)(diff / 60) + "h"
+                            } else if (diff < (60 * 24 * 7)) {
+                                ageString = (String)(diff / (60 * 24)) + "d"
+                            } else {
+                                ageString = displayFormat.string(from: date!)
+                            }
+                            
                             self.posts2.append(Post(
                                 url: postDict.value(forKey: "url") as! String,
                                 title: postDict.value(forKey: "title") as! String,
                                 image: postDict.value(forKey: "image") as! String,
                                 content: postDict.value(forKey: "content") as! String,
-                                zzz: 0))//Int(postDict.value(forKey: "ZZZ") as! String)!))
+                                zzz: Int(postDict.value(forKey: "ZZZ") as! String)!,
+                                commentCount: Int(postDict.value(forKey: "comment_count") as! String) as! Int,
+                                ageLabel: ageString))
                         }
                         self.posts2.append(nil)
                     }

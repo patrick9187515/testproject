@@ -11,6 +11,8 @@ import UIKit
 class PostIndexView: UITableViewCell {
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var labelCommentCount: UILabel!
+    @IBOutlet weak var labelTime: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
