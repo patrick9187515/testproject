@@ -44,7 +44,7 @@ class PostItemViewController: UITableViewController {
         // Do any additional setup after loading the view.
         
         //postTitle.text = "test"
-        //postTitle.text = post?.title
+        postTitle.text = post?.title
         
         //paragraphs = getParagraphs(content: (post?.content)!)
         

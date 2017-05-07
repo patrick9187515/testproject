@@ -47,6 +47,7 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
     var boots_new = [Any?]()
     var boots_old = [Any?]()
     var selectedBoot : Boot?
+    var selectedUrl : String?
     var page_0 = 1
     var page_1 = 1
     let dateFormatter = DateFormatter()
@@ -123,22 +124,16 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //indexPath.row
-        
-        selectedBoot = boots[indexPath.row] as? Boot
-        
-        //let destinationVC = PostItemViewController()
-        //destinationVC.post = selectedPost
-        
-        //destinationVC.performSegue(withIdentifier: "ShowPost", sender: nil)
-        
-        self.performSegue(withIdentifier: "ShowPost", sender: self)
+        if (boots[indexPath.row] as? Boot) != nil {
+            selectedBoot = boots[indexPath.row] as? Boot
+            selectedUrl = selectedBoot?.url
+            self.performSegue(withIdentifier: "ShowPost", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! PostItemViewController
-        
-        destinationVC.url = selectedBoot?.url
+        let destinationVC = segue.destination as! PostItemWebViewController
+        destinationVC.url = selectedUrl
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

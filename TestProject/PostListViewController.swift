@@ -31,6 +31,7 @@ class PostListViewController: UITableViewController, GADNativeExpressAdViewDeleg
     var adCount = 0
     var page = 1
     var selectedPost : Post?
+    var selectedUrl : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,20 +90,15 @@ class PostListViewController: UITableViewController, GADNativeExpressAdViewDeleg
         //indexPath.row
         
         if (posts2[indexPath.row] as? Post) != nil {
-        
-        //let destinationVC = PostItemViewController()
-        //destinationVC.post = selectedPost
-        
-        //destinationVC.performSegue(withIdentifier: "ShowPost", sender: nil)
-        
-        self.performSegue(withIdentifier: "ShowPost", sender: self)
+            selectedPost = posts2[indexPath.row] as? Post
+            selectedUrl = selectedPost?.url
+            self.performSegue(withIdentifier: "ShowPost", sender: self)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! PostItemViewController
-        
-        destinationVC.post = selectedPost
+        let destinationVC = segue.destination as! PostItemWebViewController
+        destinationVC.url = selectedUrl
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -246,7 +242,7 @@ class PostListViewController: UITableViewController, GADNativeExpressAdViewDeleg
                                 image: postDict.value(forKey: "image") as! String,
                                 content: postDict.value(forKey: "content") as! String,
                                 zzz: Int(postDict.value(forKey: "ZZZ") as! String)!,
-                                commentCount: Int(postDict.value(forKey: "comment_count") as! String) as! Int,
+                                commentCount: Int(postDict.value(forKey: "comment_count") as! String)!,
                                 ageLabel: ageString))
                         }
                         self.posts2.append(nil)

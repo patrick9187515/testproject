@@ -10,13 +10,16 @@ import UIKit
 
 class PostItemWebViewController: ViewController {
     var post : Post?
+    var url : String?
     @IBOutlet weak var wevView: UIWebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        wevView.loadRequest(URLRequest(url: URL(string: (post?.url)!)!))
+        if url != nil {
+            wevView.loadRequest(URLRequest(url: URL(string: (url)!)!))
+        }
     }
 
     override func didReceiveMemoryWarning() {

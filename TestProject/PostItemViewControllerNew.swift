@@ -9,11 +9,13 @@
 import UIKit
 
 class PostItemViewControllerNew: ViewController {
+    @IBOutlet weak var labelPostTitle: UILabel!
+    var post : Post?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        labelPostTitle.text = post?.title
     }
 
     override func didReceiveMemoryWarning() {
