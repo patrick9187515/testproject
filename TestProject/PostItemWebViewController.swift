@@ -8,17 +8,44 @@
 
 import UIKit
 
-class PostItemWebViewController: ViewController {
+class PostItemWebViewController: ViewController, UIWebViewDelegate {
     var post : Post?
     var url : String?
     @IBOutlet weak var wevView: UIWebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        wevView.delegate = self
 
         // Do any additional setup after loading the view.
         if url != nil {
+            url = url! + "?m=1&app=1"
             wevView.loadRequest(URLRequest(url: URL(string: (url)!)!))
+        }
+    }
+    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        switch navigationType {
+        case .linkClicked:
+            // open links in Safari
+            guard let url = request.url else { return true }
+            let realUrl = url.absoluteString + "?m=1&app=1"
+            
+            if url.host?.range(of: "footyheadlines.com") != nil {
+                wevView.loadRequest(URLRequest(url: URL(string: realUrl)!))
+                return false
+            }
+            
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+            return false
+        default:
+            // handle other navigation types...
+            return true
         }
     }
 
