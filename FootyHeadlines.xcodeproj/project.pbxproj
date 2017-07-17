@@ -140,7 +140,7 @@
 		43EA68431E95365D00B94683 = {
 			isa = PBXGroup;
 			children = (
-				43EA684E1E95365D00B94683 /* TestProject */,
+				43EA684E1E95365D00B94683 /* FootyHeadlines */,
 				43EA68631E95365D00B94683 /* TestProjectTests */,
 				43EA686E1E95365D00B94683 /* TestProjectUITests */,
 				43EA684D1E95365D00B94683 /* Products */,
@@ -159,7 +159,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		43EA684E1E95365D00B94683 /* TestProject */ = {
+		43EA684E1E95365D00B94683 /* FootyHeadlines */ = {
 			isa = PBXGroup;
 			children = (
 				43EA684F1E95365D00B94683 /* AppDelegate.swift */,
@@ -193,6 +193,7 @@
 				43F0CFD81EBDFFB400563187 /* CollectionHeaderTableViewCell.xib */,
 				43F0CFDB1EBE271E00563187 /* NativeExpressAd.xib */,
 			);
+			name = FootyHeadlines;
 			path = TestProject;
 			sourceTree = "<group>";
 		};
