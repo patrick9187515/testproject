@@ -17,7 +17,7 @@
                BlueprintIdentifier = "43EA684B1E95365D00B94683"
                BuildableName = "TestProject.app"
                BlueprintName = "TestProject"
-               ReferencedContainer = "container:TestProject.xcodeproj">
+               ReferencedContainer = "container:FootyHeadlines.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "43EA685F1E95365D00B94683"
                BuildableName = "TestProjectTests.xctest"
                BlueprintName = "TestProjectTests"
-               ReferencedContainer = "container:TestProject.xcodeproj">
+               ReferencedContainer = "container:FootyHeadlines.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "43EA686A1E95365D00B94683"
                BuildableName = "TestProjectUITests.xctest"
                BlueprintName = "TestProjectUITests"
-               ReferencedContainer = "container:TestProject.xcodeproj">
+               ReferencedContainer = "container:FootyHeadlines.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,7 +55,7 @@
             BlueprintIdentifier = "43EA684B1E95365D00B94683"
             BuildableName = "TestProject.app"
             BlueprintName = "TestProject"
-            ReferencedContainer = "container:TestProject.xcodeproj">
+            ReferencedContainer = "container:FootyHeadlines.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -78,7 +78,7 @@
             BlueprintIdentifier = "43EA684B1E95365D00B94683"
             BuildableName = "TestProject.app"
             BlueprintName = "TestProject"
-            ReferencedContainer = "container:TestProject.xcodeproj">
+            ReferencedContainer = "container:FootyHeadlines.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -97,7 +97,7 @@
             BlueprintIdentifier = "43EA684B1E95365D00B94683"
             BuildableName = "TestProject.app"
             BlueprintName = "TestProject"
-            ReferencedContainer = "container:TestProject.xcodeproj">
+            ReferencedContainer = "container:FootyHeadlines.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
