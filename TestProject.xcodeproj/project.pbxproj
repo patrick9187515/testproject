@@ -314,8 +314,8 @@
 				TargetAttributes = {
 					43EA684B1E95365D00B94683 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 2WAU85NGE8;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = N9396EHA96;
+						ProvisioningStyle = Manual;
 					};
 					43EA685F1E95365D00B94683 = {
 						CreatedOnToolsVersion = 8.3;
@@ -699,12 +699,15 @@
 			baseConfigurationReference = F9A6C55F0F1CA677F3043E61 /* Pods-TestProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2WAU85NGE8;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = N9396EHA96;
 				INFOPLIST_FILE = TestProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.footyheadlines.FootyHeadlines;
+				PRODUCT_BUNDLE_IDENTIFIER = com.footyheadlines;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0cc8ecc0-7eca-41f6-a5f9-0bce73b85fdd";
+				PROVISIONING_PROFILE_SPECIFIER = "Footy Headlines";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -715,12 +718,15 @@
 			baseConfigurationReference = 721AABF92B1674AB64072678 /* Pods-TestProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2WAU85NGE8;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = N9396EHA96;
 				INFOPLIST_FILE = TestProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.footyheadlines.FootyHeadlines;
+				PRODUCT_BUNDLE_IDENTIFIER = com.footyheadlines;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0cc8ecc0-7eca-41f6-a5f9-0bce73b85fdd";
+				PROVISIONING_PROFILE_SPECIFIER = "Footy Headlines";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
