@@ -80,7 +80,7 @@
                                 </connections>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y3K-UV-OPH">
-                                <rect key="frame" x="0.0" y="44" width="375" height="510"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="559"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="tM6-Sx-bqa">
@@ -103,9 +103,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="Y3K-UV-OPH" secondAttribute="bottom" id="5cf-CN-mWg"/>
                             <constraint firstItem="JJl-3R-Vzy" firstAttribute="leading" secondItem="TXc-D2-xgN" secondAttribute="leading" id="89c-X7-DeR"/>
                             <constraint firstItem="Y3K-UV-OPH" firstAttribute="top" secondItem="JJl-3R-Vzy" secondAttribute="bottom" id="LMo-Vj-ZaK"/>
-                            <constraint firstItem="x51-Vs-ijH" firstAttribute="top" secondItem="Y3K-UV-OPH" secondAttribute="bottom" id="P8v-bP-oqg"/>
                             <constraint firstAttribute="trailing" secondItem="JJl-3R-Vzy" secondAttribute="trailing" id="dyx-BN-eCX"/>
                             <constraint firstAttribute="right" secondItem="Y3K-UV-OPH" secondAttribute="right" id="hbj-gc-JB1"/>
                             <constraint firstItem="Y3K-UV-OPH" firstAttribute="leading" secondItem="TXc-D2-xgN" secondAttribute="leading" id="ktG-bl-T92"/>
@@ -125,7 +125,7 @@
         <!--Kit Overview-->
         <scene sceneID="zWI-MD-GHn">
             <objects>
-                <viewController id="1PX-Ew-2I4" userLabel="Kit Overview" sceneMemberID="viewController">
+                <viewController id="1PX-Ew-2I4" userLabel="Kit Overview" customClass="KitOverviewViewController" customModule="FootyHeadlines" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GT9-J9-JGY"/>
                         <viewControllerLayoutGuide type="bottom" id="ThX-9T-miS"/>
@@ -136,7 +136,7 @@
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mn-EJ-QS2">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -149,6 +149,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Kit Overview" id="G6Q-e1-C5s" userLabel="Kit Overview"/>
                     <navigationItem key="navigationItem" title="Kit Overview" id="SpM-e4-Lam"/>
+                    <connections>
+                        <outlet property="kitOverviewWebController" destination="5mn-EJ-QS2" id="h3m-xB-k09"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lZ-2H-OqU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -162,7 +165,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="6DV-ap-Hwt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="1" green="0.53333333329999999" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="1PX-Ew-2I4" kind="relationship" relationship="rootViewController" id="5FF-xG-px6"/>
@@ -175,7 +182,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="oyR-rU-9RU">
             <objects>
-                <tabBarController id="kT7-PX-0h7" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" id="kT7-PX-0h7" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="kXG-Ob-25b"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="centered" id="xp6-aV-FpS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -201,7 +208,7 @@
         <!--Post Item Web View Controller-->
         <scene sceneID="Eg1-5H-qW9">
             <objects>
-                <viewController id="yZk-0a-k6c" customClass="PostItemWebViewController" customModule="FootyHeadlines" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostItemView" id="yZk-0a-k6c" customClass="PostItemWebViewController" customModule="FootyHeadlines" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KV6-Fs-zjj"/>
                         <viewControllerLayoutGuide type="bottom" id="feK-JT-Mfr"/>

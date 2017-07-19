@@ -198,7 +198,7 @@ class PostListViewController: UITableViewController, GADNativeExpressAdViewDeleg
     
     func refresh(_ refreshControl: UIRefreshControl) {
         page = 1
-        adCount = 0
+        adCount = 1
         posts2 = [AnyObject?]()
         
         loadPosts()
@@ -246,10 +246,18 @@ class PostListViewController: UITableViewController, GADNativeExpressAdViewDeleg
                                 ageString = displayFormat.string(from: date!)
                             }
                             
+                            // Image size
+                            let image = postDict.value(forKey: "image") as! String
+                            let regex = try! NSRegularExpression(pattern: "/s[0-9]+/")
+                            let range = NSMakeRange(0, image.characters.count)
+                            let imageBig = regex.stringByReplacingMatches(in: image, options: [], range: range, withTemplate: "/w400-h205-c/")
+                            let imageSquare = regex.stringByReplacingMatches(in: image, options: [], range: range, withTemplate: "/s100-c/")
+                            
                             self.posts2.append(Post(
                                 url: postDict.value(forKey: "url") as! String,
                                 title: postDict.value(forKey: "title") as! String,
-                                image: postDict.value(forKey: "image") as! String,
+                                image: imageBig,
+                                imageSquare: imageSquare,
                                 content: postDict.value(forKey: "content") as! String,
                                 zzz: Int(postDict.value(forKey: "ZZZ") as! String)!,
                                 commentCount: Int(postDict.value(forKey: "comment_count") as! String)!,

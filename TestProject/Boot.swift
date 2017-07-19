@@ -44,6 +44,12 @@ extension Boot {
     dateFormatter.dateFormat = "yyyy-MM-dd"
         
     let date = dateFormatter.date(from: postDict.value(forKey: "release_date") as! String)
+        
+        // Image size
+        let image = postDict.value(forKey: "image") as! String
+        let regex = try! NSRegularExpression(pattern: "/s[0-9]+/")
+        let range = NSMakeRange(0, image.characters.count)
+        let imageNew = regex.stringByReplacingMatches(in: image, options: [], range: range, withTemplate: "/s200/")
     
     self.brand = postDict.value(forKey: "brand") as! String
     self.name = postDict.value(forKey: "name") as! String
@@ -51,7 +57,7 @@ extension Boot {
     self.release_date = date!
     self.not_sure = postDict.value(forKey: "not_sure") as! String
     self.url = postDict.value(forKey: "url") as! String
-    self.image = postDict.value(forKey: "image") as! String
+    self.image = imageNew
     }
 }
 
