@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "43EA684B1E95365D00B94683"
-               BuildableName = "TestProject.app"
-               BlueprintName = "TestProject"
+               BuildableName = "FootyHeadlines.app"
+               BlueprintName = "FootyHeadlines"
                ReferencedContainer = "container:FootyHeadlines.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "43EA685F1E95365D00B94683"
-               BuildableName = "TestProjectTests.xctest"
-               BlueprintName = "TestProjectTests"
+               BuildableName = "FootyHeadlinesTests.xctest"
+               BlueprintName = "FootyHeadlinesTests"
                ReferencedContainer = "container:FootyHeadlines.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -43,8 +43,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "43EA686A1E95365D00B94683"
-               BuildableName = "TestProjectUITests.xctest"
-               BlueprintName = "TestProjectUITests"
+               BuildableName = "FootyHeadlinesUITests.xctest"
+               BlueprintName = "FootyHeadlinesUITests"
                ReferencedContainer = "container:FootyHeadlines.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -53,8 +53,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "43EA684B1E95365D00B94683"
-            BuildableName = "TestProject.app"
-            BlueprintName = "TestProject"
+            BuildableName = "FootyHeadlines.app"
+            BlueprintName = "FootyHeadlines"
             ReferencedContainer = "container:FootyHeadlines.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -76,8 +76,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "43EA684B1E95365D00B94683"
-            BuildableName = "TestProject.app"
-            BlueprintName = "TestProject"
+            BuildableName = "FootyHeadlines.app"
+            BlueprintName = "FootyHeadlines"
             ReferencedContainer = "container:FootyHeadlines.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -95,8 +95,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "43EA684B1E95365D00B94683"
-            BuildableName = "TestProject.app"
-            BlueprintName = "TestProject"
+            BuildableName = "FootyHeadlines.app"
+            BlueprintName = "FootyHeadlines"
             ReferencedContainer = "container:FootyHeadlines.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

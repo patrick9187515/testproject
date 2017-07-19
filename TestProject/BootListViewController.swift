@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import SDWebImage
+import Firebase
+import GoogleMobileAds
 
-class BootListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate {
+class BootListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate, GADNativeExpressAdViewDelegate {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     @IBAction func indexChanged(_ sender: Any) {
@@ -46,11 +49,17 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
     var boots = [Any?]()
     var boots_new = [Any?]()
     var boots_old = [Any?]()
+    var adsToLoad = [GADNativeExpressAdView]()
+    let adViewHeight = CGFloat(300)
+    let adViewWidth = CGFloat(320)
+    var adCountNew = 8
+    var adCountOld = 8
     var selectedBoot : Boot?
     var selectedUrl : String?
     var page_0 = 1
     var page_1 = 1
     let dateFormatter = DateFormatter()
+    let dateFormatterShort = DateFormatter()
     var dateFormatterToString = DateFormatter()
     var dateFormatterMonth = DateFormatter()
     var initialLoad = true;
@@ -79,6 +88,8 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
                            forCellReuseIdentifier: "DateHeader")
         tableView.register(UINib(nibName: "CollectionHeaderTableViewCell", bundle: nil),
                            forCellReuseIdentifier: "CollectionHeader")
+        tableView.register(UINib(nibName: "NativeExpressAd", bundle: nil),
+                           forCellReuseIdentifier: "NativeExpressAdViewCell")
         
         
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -86,6 +97,7 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
         
         //load data
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatterShort.dateFormat = "MMM"
         dateFormatterMonth.dateFormat = "MMM yyyy"
         dateFormatterToString.dateStyle = .medium
         dateFormatterToString.locale = Locale(identifier: "en_US")
@@ -100,6 +112,47 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
             tableView.refreshControl = refreshControl
         } else {
             tableView.addSubview(refreshControl)
+        }
+    }
+    
+    
+    
+    func loadNextAd() {
+        if !adsToLoad.isEmpty {
+            let adView = adsToLoad.removeFirst()
+            adView.load(GADRequest())
+        }
+    }
+    
+    func addAds(type: Int) {
+        var adCount = adCountNew
+        if type == 1 {
+            adCount = adCountOld
+        }
+        let adSize = GADAdSizeFromCGSize(CGSize(width: adViewWidth, height: adViewHeight))
+        while (adCount < boots.count) {
+            if (boots[adCount-1] as? Boot) != nil {
+                    let adView = GADNativeExpressAdView(adSize: adSize)
+                    adView?.adUnitID = "ca-app-pub-3940256099942544/8897359316"
+                    adView?.rootViewController = self
+                    adView?.delegate = self
+                    boots.insert(adView!, at: adCount)
+                    boots.insert(nil, at: adCount)
+                    //posts2.insert(nil, at: (3 + adCount * 4))
+                    adsToLoad.append(adView!)
+                    adCount += (2 * 6 + 2)
+            } else {
+                adCount += 1
+            }
+        }
+        loadNextAd()
+        
+        if type == 0 {
+            adCountNew = adCount
+            boots_new = boots
+        } else {
+            adCountOld = adCount
+            boots_old = boots
         }
     }
     
@@ -159,7 +212,12 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return UITableViewAutomaticDimension
+        
+        if boots[indexPath.row] as? GADNativeExpressAdView != nil {
+            return adViewHeight
+        }
+        
+        return UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -170,9 +228,11 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
         if (segmentedControl.selectedSegmentIndex == 0) {
             page_0 = 1
             boots = [Boot]()
+            adCountNew = 8
         } else if (segmentedControl.selectedSegmentIndex == 1) {
             page_1 = 1
             boots = [Boot]()
+            adCountOld = 8
         }
         
         loadBoots()
@@ -182,7 +242,7 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func loadBoots() {
         if (segmentedControl.selectedSegmentIndex == 0) {
-        let url = "http://cdn.footyheadlines.com/_/api.php?type=boots&order=new&page=" + String(page_0)
+        let url = "http://cdn.footyheadlines.com/api/?type=boots&order=new&page=" + String(page_0)
         
         URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: {(data, response, error) in
             
@@ -221,11 +281,12 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
             }
             
             OperationQueue.main.addOperation {
+                self.addAds(type: 0)
                 self.tableView.reloadData()
             }
         }).resume()
         } else if (segmentedControl.selectedSegmentIndex == 1) {
-        let url_old = "http://cdn.footyheadlines.com/_/api.php?type=boots&order=old&page=" + String(page_1)
+        let url_old = "http://cdn.footyheadlines.com/api/?type=boots&order=old&page=" + String(page_1)
         
         URLSession.shared.dataTask(with: URL(string: url_old)!, completionHandler: {(data, response, error) in
             
@@ -264,6 +325,7 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
             }
             
             OperationQueue.main.addOperation {
+                self.addAds(type: 1)
                 self.tableView.reloadData()
             }
         }).resume()
@@ -283,7 +345,12 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.bootImage?.sd_setImage(with: URL(string: (temp.image)))
                 cell.labelName?.text = (temp.brand) + " " + (temp.name)
                 let labelDateText = dateFormatterToString.string(from: (temp.release_date))
+                    if temp.not_sure == "0" {
                 cell.labelDate?.text = labelDateText
+                    } else {
+                        let monthText = dateFormatterShort.string(from: (temp.release_date))
+                        cell.labelDate?.text = monthText
+                    }
                 
                 return cell
                 } else if let row = boots[indexPath.row] as? DateHeader {
@@ -298,12 +365,25 @@ class BootListViewController: UIViewController, UITableViewDelegate, UITableView
                     cell.label.text = row.title
                     
                     return cell
+                } else {
+                    let adView = boots[indexPath.row] as! GADNativeExpressAdView
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "NativeExpressAdViewCell", for: indexPath)
+                    for subview in cell.contentView.subviews {
+                        subview.removeFromSuperview()
+                    }
+                    cell.contentView.addSubview(adView)
+                    adView.center = cell.contentView.center
+                    return cell
                 }
             } else {
                 return tableView.dequeueReusableCell(withIdentifier: "Seperator", for: indexPath)
             }
         }
         return UITableViewCell()
+    }
+    
+    func nativeExpressAdViewDidReceiveAd(_ nativeExpressAdView: GADNativeExpressAdView) {
+        loadNextAd()
     }
 
     /*

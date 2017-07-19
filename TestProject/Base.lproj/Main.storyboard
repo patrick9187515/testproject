@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kT7-PX-0h7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kT7-PX-0h7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +12,7 @@
         <!--News-->
         <scene sceneID="TMs-gN-l9M">
             <objects>
-                <tableViewController id="VyE-Pg-Opa" customClass="PostListViewController" customModule="TestProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="VyE-Pg-Opa" customClass="PostListViewController" customModule="FootyHeadlines" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" id="2WL-c4-tXn">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,7 +45,7 @@
         <!--Boot Calendar-->
         <scene sceneID="1I7-DA-1hp">
             <objects>
-                <viewController title="Boot Calendar" id="psN-Ju-toJ" customClass="BootListViewController" customModule="TestProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Boot Calendar" id="psN-Ju-toJ" customClass="BootListViewController" customModule="FootyHeadlines" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fhU-GU-5zV"/>
                         <viewControllerLayoutGuide type="bottom" id="x51-Vs-ijH"/>
@@ -122,6 +122,56 @@
             </objects>
             <point key="canvasLocation" x="814" y="394"/>
         </scene>
+        <!--Kit Overview-->
+        <scene sceneID="zWI-MD-GHn">
+            <objects>
+                <viewController id="1PX-Ew-2I4" userLabel="Kit Overview" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GT9-J9-JGY"/>
+                        <viewControllerLayoutGuide type="bottom" id="ThX-9T-miS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ykk-TL-dZS">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mn-EJ-QS2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5mn-EJ-QS2" firstAttribute="top" secondItem="GT9-J9-JGY" secondAttribute="bottom" id="CbG-s0-y9P"/>
+                            <constraint firstAttribute="trailing" secondItem="5mn-EJ-QS2" secondAttribute="trailing" id="Hw7-xf-Ekw"/>
+                            <constraint firstItem="5mn-EJ-QS2" firstAttribute="leading" secondItem="Ykk-TL-dZS" secondAttribute="leading" id="S8G-ao-KiO"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="5mn-EJ-QS2" secondAttribute="bottom" id="VID-b4-z9Y"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Kit Overview" id="G6Q-e1-C5s" userLabel="Kit Overview"/>
+                    <navigationItem key="navigationItem" title="Kit Overview" id="SpM-e4-Lam"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6lZ-2H-OqU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="813.60000000000002" y="1159.9700149925038"/>
+        </scene>
+        <!--Kit Overview-->
+        <scene sceneID="I9c-Ca-Ifv">
+            <objects>
+                <navigationController id="bZe-eD-Omt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Kit Overview" id="7rO-Qy-IGS" userLabel="Kit Overview"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="6DV-ap-Hwt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.53333333329999999" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="1PX-Ew-2I4" kind="relationship" relationship="rootViewController" id="5FF-xG-px6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="La1-gH-6Bz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="41" y="1160"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="oyR-rU-9RU">
             <objects>
@@ -141,16 +191,17 @@
                     <connections>
                         <segue destination="wJ8-cj-cRF" kind="relationship" relationship="viewControllers" id="i0x-zy-1ip"/>
                         <segue destination="WE7-ur-NzT" kind="relationship" relationship="viewControllers" id="yLL-3l-MvR"/>
+                        <segue destination="bZe-eD-Omt" kind="relationship" relationship="viewControllers" id="ta9-Ih-rMs"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="npv-VW-JHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1223" y="41"/>
+            <point key="canvasLocation" x="-1212" y="635"/>
         </scene>
         <!--Post Item Web View Controller-->
         <scene sceneID="Eg1-5H-qW9">
             <objects>
-                <viewController id="yZk-0a-k6c" customClass="PostItemWebViewController" customModule="TestProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yZk-0a-k6c" customClass="PostItemWebViewController" customModule="FootyHeadlines" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KV6-Fs-zjj"/>
                         <viewControllerLayoutGuide type="bottom" id="feK-JT-Mfr"/>

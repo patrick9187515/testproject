@@ -28,7 +28,7 @@ class PostListViewController: UITableViewController, GADNativeExpressAdViewDeleg
     let adViewHeight = CGFloat(300)
     let adViewWidth = CGFloat(320)
     let numberOfAds = 3
-    var adCount = 0
+    var adCount = 1
     var page = 1
     var selectedPost : Post?
     var selectedUrl : String?
@@ -73,15 +73,25 @@ class PostListViewController: UITableViewController, GADNativeExpressAdViewDeleg
     
     func addAds() {
         let adSize = GADAdSizeFromCGSize(CGSize(width: adViewWidth, height: adViewHeight))
-        while (adCount < numberOfAds) {
-             let adView = GADNativeExpressAdView(adSize: adSize)
-             adView?.adUnitID = "ca-app-pub-3940256099942544/8897359316"
-             adView?.rootViewController = self
-             adView?.delegate = self
-             posts2.insert(adView!, at: (2 + adCount * 4))
-            posts2.insert(nil, at: (3 + adCount * 4))
-             adsToLoad.append(adView!)
-             adCount += 1
+        while (adCount < posts2.count) {
+            if (posts2[adCount-1] as? Post) != nil {
+                let tempPost = posts2[adCount-1] as? Post
+                if (tempPost?.zzz == 1) {
+                    adCount += 1
+                } else {
+                    let adView = GADNativeExpressAdView(adSize: adSize)
+                    adView?.adUnitID = "ca-app-pub-3940256099942544/8897359316"
+                    adView?.rootViewController = self
+                    adView?.delegate = self
+                    posts2.insert(adView!, at: adCount)
+                    posts2.insert(nil, at: adCount)
+                    //posts2.insert(nil, at: (3 + adCount * 4))
+                    adsToLoad.append(adView!)
+                    adCount += 8
+                }
+            } else {
+                adCount += 1
+            }
         }
         loadNextAd()
     }
@@ -197,7 +207,7 @@ class PostListViewController: UITableViewController, GADNativeExpressAdViewDeleg
     }
     
     func loadPosts() {
-        let url = "http://cdn.footyheadlines.com/_/api.php?page=" + String(page)
+        let url = "http://cdn.footyheadlines.com/api/?page=" + String(page)
         
         URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: {(data, response, error) in
             
