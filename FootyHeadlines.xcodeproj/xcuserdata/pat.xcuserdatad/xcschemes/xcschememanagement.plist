@@ -4,14 +4,34 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>OneSignalNotificationExtension.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>TestProject.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>crap.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>436613C21F2F38FE009B5E8B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>43BC4A531F2F405D0014417D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>43EA684B1E95365D00B94683</key>
 		<dict>
 			<key>primary</key>

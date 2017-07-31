@@ -38,7 +38,9 @@ class PostItemWebViewController: UIViewController, UIWebViewDelegate {
         case .linkClicked:
             // open links in Safari
             guard let newUrl = request.url else { return true }
-            let realUrl = newUrl.absoluteString + "?m=1&app=1"
+            print(newUrl)
+            let realUrl = baseUrl(url: newUrl.absoluteString) + "?m=1&app=1"
+            print(realUrl)
             
             if newUrl.host?.range(of: "footyheadlines.com") != nil {
                 if baseUrl(url: newUrl.absoluteString) != baseUrl(url: url!) {

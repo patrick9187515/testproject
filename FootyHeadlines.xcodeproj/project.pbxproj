@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3134DDC2934E2FDFEE4CB1FC /* Pods_TestProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28E6AC16E7F66230EAB9112F /* Pods_TestProjectTests.framework */; };
+		3653E60EFB63698745CBBD25 /* libPods-OneSignalNotificationExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E001D93B6B5154B763760667 /* libPods-OneSignalNotificationExtension.a */; };
 		430D37771EBD185A00CF64EE /* SeperatorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 430D37761EBD185A00CF64EE /* SeperatorTableViewCell.xib */; };
 		4324CA341E978FDA005D82FF /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324CA331E978FDA005D82FF /* PostListViewController.swift */; };
 		4324CA361E97D5EE005D82FF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324CA351E97D5EE005D82FF /* Post.swift */; };
@@ -24,6 +25,9 @@
 		4359EE581EB0A0C600BCA43D /* PostItemWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4359EE571EB0A0C600BCA43D /* PostItemWebViewController.swift */; };
 		4359EE5F1EB0A87300BCA43D /* PostIndexZZZView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4359EE5D1EB0A87300BCA43D /* PostIndexZZZView.swift */; };
 		4359EE601EB0A87300BCA43D /* PostIndexZZZView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4359EE5E1EB0A87300BCA43D /* PostIndexZZZView.xib */; };
+		436613C71F2F38FE009B5E8B /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 436613C61F2F38FE009B5E8B /* NotificationService.m */; };
+		436613CB1F2F38FE009B5E8B /* OneSignalNotificationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 436613C31F2F38FE009B5E8B /* OneSignalNotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		43BC4A5C1F2F405D0014417D /* crap.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 43BC4A541F2F405D0014417D /* crap.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		43EA68501E95365D00B94683 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA684F1E95365D00B94683 /* AppDelegate.swift */; };
 		43EA68521E95365D00B94683 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA68511E95365D00B94683 /* ViewController.swift */; };
 		43EA68551E95365D00B94683 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43EA68531E95365D00B94683 /* Main.storyboard */; };
@@ -40,11 +44,28 @@
 		43F0CFDA1EBDFFB400563187 /* CollectionHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43F0CFD81EBDFFB400563187 /* CollectionHeaderTableViewCell.xib */; };
 		43F0CFDC1EBE271E00563187 /* NativeExpressAd.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43F0CFDB1EBE271E00563187 /* NativeExpressAd.xib */; };
 		43FDEC881EA6D5D80065C400 /* PostItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FDEC871EA6D5D80065C400 /* PostItemViewController.swift */; };
+		76BDC47E30A6528E69B7E79F /* libPods-FootyHeadlinesUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7810EE1931871AAE72AD9042 /* libPods-FootyHeadlinesUITests.a */; };
 		86736B7CC9467627201A13CE /* Pods_TestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E231C9220844D7D811D53F2 /* Pods_TestProject.framework */; };
+		A0B2398F7A77FFCD9B61FF8C /* libPods-FootyHeadlinesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF110026690AFF4F36978C0 /* libPods-FootyHeadlinesTests.a */; };
 		A399D5B2DE5104F48B2DC1FD /* Pods_TestProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F4D261B1CFDDE972C81DC4 /* Pods_TestProjectUITests.framework */; };
+		F2B1CA2544C23D4F7C71C68A /* Pods_FootyHeadlines.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC1B63EA066E81D52E5A6A44 /* Pods_FootyHeadlines.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		436613C91F2F38FE009B5E8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43EA68441E95365D00B94683 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 436613C21F2F38FE009B5E8B;
+			remoteInfo = OneSignalNotificationExtension;
+		};
+		43BC4A5A1F2F405D0014417D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43EA68441E95365D00B94683 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 43BC4A531F2F405D0014417D;
+			remoteInfo = crap;
+		};
 		43EA68611E95365D00B94683 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 43EA68441E95365D00B94683 /* Project object */;
@@ -61,9 +82,28 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		436613CF1F2F38FE009B5E8B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				43BC4A5C1F2F405D0014417D /* crap.appex in Embed App Extensions */,
+				436613CB1F2F38FE009B5E8B /* OneSignalNotificationExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0513C1075E1BC8C2A78AAF14 /* Pods-TestProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestProjectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestProjectUITests/Pods-TestProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		136E83EBF659989D7316FD84 /* Pods-FootyHeadlinesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootyHeadlinesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FootyHeadlinesTests/Pods-FootyHeadlinesTests.release.xcconfig"; sourceTree = "<group>"; };
+		259528389FB471FCD03E6699 /* Pods-FootyHeadlinesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootyHeadlinesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FootyHeadlinesUITests/Pods-FootyHeadlinesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		28E6AC16E7F66230EAB9112F /* Pods_TestProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B849A5E5396B67B607633F5 /* Pods-FootyHeadlines.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootyHeadlines.release.xcconfig"; path = "Pods/Target Support Files/Pods-FootyHeadlines/Pods-FootyHeadlines.release.xcconfig"; sourceTree = "<group>"; };
+		2F7329C1F00BD8FC4219BDDC /* Pods-OneSignalNotificationExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationExtension/Pods-OneSignalNotificationExtension.release.xcconfig"; sourceTree = "<group>"; };
 		30B17B6F08631AA47EA5C293 /* Pods-TestProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestProjectTests/Pods-TestProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		430D37761EBD185A00CF64EE /* SeperatorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeperatorTableViewCell.xib; sourceTree = "<group>"; };
 		4324CA331E978FDA005D82FF /* PostListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +121,12 @@
 		4359EE571EB0A0C600BCA43D /* PostItemWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostItemWebViewController.swift; sourceTree = "<group>"; };
 		4359EE5D1EB0A87300BCA43D /* PostIndexZZZView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostIndexZZZView.swift; sourceTree = "<group>"; };
 		4359EE5E1EB0A87300BCA43D /* PostIndexZZZView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostIndexZZZView.xib; sourceTree = "<group>"; };
+		436613C31F2F38FE009B5E8B /* OneSignalNotificationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		436613C51F2F38FE009B5E8B /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		436613C61F2F38FE009B5E8B /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		436613C81F2F38FE009B5E8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43BC4A4F1F2F3F0A0014417D /* FootyHeadlines.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FootyHeadlines.entitlements; sourceTree = "<group>"; };
+		43BC4A541F2F405D0014417D /* crap.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = crap.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		43EA684C1E95365D00B94683 /* FootyHeadlines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootyHeadlines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43EA684F1E95365D00B94683 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43EA68511E95365D00B94683 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,20 +149,44 @@
 		43F0CFD81EBDFFB400563187 /* CollectionHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		43F0CFDB1EBE271E00563187 /* NativeExpressAd.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NativeExpressAd.xib; sourceTree = "<group>"; };
 		43FDEC871EA6D5D80065C400 /* PostItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostItemViewController.swift; sourceTree = "<group>"; };
+		6DD6A30607F3D4D4616ABD1D /* Pods-FootyHeadlinesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootyHeadlinesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FootyHeadlinesUITests/Pods-FootyHeadlinesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6E231C9220844D7D811D53F2 /* Pods_TestProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		721AABF92B1674AB64072678 /* Pods-TestProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestProject/Pods-TestProject.release.xcconfig"; sourceTree = "<group>"; };
+		7810EE1931871AAE72AD9042 /* libPods-FootyHeadlinesUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FootyHeadlinesUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B228421ED937953E9856BCA /* Pods-TestProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestProjectTests/Pods-TestProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		91F4D261B1CFDDE972C81DC4 /* Pods_TestProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C93C8A50075A2F68D4CE355 /* Pods-OneSignalNotificationExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationExtension/Pods-OneSignalNotificationExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		A2F12C29217FB7F8A1DA1B75 /* Pods-TestProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestProjectUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestProjectUITests/Pods-TestProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B07ECE5DAAD9D0BA4A84249D /* Pods-FootyHeadlinesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootyHeadlinesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FootyHeadlinesTests/Pods-FootyHeadlinesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DC1B63EA066E81D52E5A6A44 /* Pods_FootyHeadlines.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FootyHeadlines.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E001D93B6B5154B763760667 /* libPods-OneSignalNotificationExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneSignalNotificationExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED3CC352302B40C3A4D0AFDA /* Pods-FootyHeadlines.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootyHeadlines.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FootyHeadlines/Pods-FootyHeadlines.debug.xcconfig"; sourceTree = "<group>"; };
 		F9A6C55F0F1CA677F3043E61 /* Pods-TestProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestProject/Pods-TestProject.debug.xcconfig"; sourceTree = "<group>"; };
+		FAF110026690AFF4F36978C0 /* libPods-FootyHeadlinesTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FootyHeadlinesTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		436613C01F2F38FE009B5E8B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3653E60EFB63698745CBBD25 /* libPods-OneSignalNotificationExtension.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43BC4A511F2F405D0014417D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		43EA68491E95365D00B94683 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				86736B7CC9467627201A13CE /* Pods_TestProject.framework in Frameworks */,
+				F2B1CA2544C23D4F7C71C68A /* Pods_FootyHeadlines.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3134DDC2934E2FDFEE4CB1FC /* Pods_TestProjectTests.framework in Frameworks */,
+				A0B2398F7A77FFCD9B61FF8C /* libPods-FootyHeadlinesTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,18 +204,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				A399D5B2DE5104F48B2DC1FD /* Pods_TestProjectUITests.framework in Frameworks */,
+				76BDC47E30A6528E69B7E79F /* libPods-FootyHeadlinesUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		436613C41F2F38FE009B5E8B /* OneSignalNotificationExtension */ = {
+			isa = PBXGroup;
+			children = (
+				436613C51F2F38FE009B5E8B /* NotificationService.h */,
+				436613C61F2F38FE009B5E8B /* NotificationService.m */,
+				436613C81F2F38FE009B5E8B /* Info.plist */,
+			);
+			path = OneSignalNotificationExtension;
+			sourceTree = "<group>";
+		};
 		43EA68431E95365D00B94683 = {
 			isa = PBXGroup;
 			children = (
+				43BC4A4F1F2F3F0A0014417D /* FootyHeadlines.entitlements */,
 				43EA684E1E95365D00B94683 /* TestProject */,
 				43EA68631E95365D00B94683 /* TestProjectTests */,
 				43EA686E1E95365D00B94683 /* TestProjectUITests */,
+				436613C41F2F38FE009B5E8B /* OneSignalNotificationExtension */,
 				43EA684D1E95365D00B94683 /* Products */,
 				729FC37C9F6DC7830013CE90 /* Pods */,
 				E9B3767116E99F1BA2E6B7B0 /* Frameworks */,
@@ -157,6 +241,8 @@
 				43EA684C1E95365D00B94683 /* FootyHeadlines.app */,
 				43EA68601E95365D00B94683 /* FootyHeadlinesTests.xctest */,
 				43EA686B1E95365D00B94683 /* FootyHeadlinesUITests.xctest */,
+				436613C31F2F38FE009B5E8B /* OneSignalNotificationExtension.appex */,
+				43BC4A541F2F405D0014417D /* crap.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -226,6 +312,14 @@
 				30B17B6F08631AA47EA5C293 /* Pods-TestProjectTests.release.xcconfig */,
 				0513C1075E1BC8C2A78AAF14 /* Pods-TestProjectUITests.debug.xcconfig */,
 				A2F12C29217FB7F8A1DA1B75 /* Pods-TestProjectUITests.release.xcconfig */,
+				ED3CC352302B40C3A4D0AFDA /* Pods-FootyHeadlines.debug.xcconfig */,
+				2B849A5E5396B67B607633F5 /* Pods-FootyHeadlines.release.xcconfig */,
+				B07ECE5DAAD9D0BA4A84249D /* Pods-FootyHeadlinesTests.debug.xcconfig */,
+				136E83EBF659989D7316FD84 /* Pods-FootyHeadlinesTests.release.xcconfig */,
+				259528389FB471FCD03E6699 /* Pods-FootyHeadlinesUITests.debug.xcconfig */,
+				6DD6A30607F3D4D4616ABD1D /* Pods-FootyHeadlinesUITests.release.xcconfig */,
+				9C93C8A50075A2F68D4CE355 /* Pods-OneSignalNotificationExtension.debug.xcconfig */,
+				2F7329C1F00BD8FC4219BDDC /* Pods-OneSignalNotificationExtension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -236,6 +330,10 @@
 				6E231C9220844D7D811D53F2 /* Pods_TestProject.framework */,
 				28E6AC16E7F66230EAB9112F /* Pods_TestProjectTests.framework */,
 				91F4D261B1CFDDE972C81DC4 /* Pods_TestProjectUITests.framework */,
+				DC1B63EA066E81D52E5A6A44 /* Pods_FootyHeadlines.framework */,
+				FAF110026690AFF4F36978C0 /* libPods-FootyHeadlinesTests.a */,
+				7810EE1931871AAE72AD9042 /* libPods-FootyHeadlinesUITests.a */,
+				E001D93B6B5154B763760667 /* libPods-OneSignalNotificationExtension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -243,6 +341,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		436613C21F2F38FE009B5E8B /* OneSignalNotificationExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 436613CE1F2F38FE009B5E8B /* Build configuration list for PBXNativeTarget "OneSignalNotificationExtension" */;
+			buildPhases = (
+				529E871E921BE225A64E588D /* [CP] Check Pods Manifest.lock */,
+				436613BF1F2F38FE009B5E8B /* Sources */,
+				436613C01F2F38FE009B5E8B /* Frameworks */,
+				436613C11F2F38FE009B5E8B /* Resources */,
+				958EEA2F4A13875FB92C9B54 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationExtension;
+			productName = OneSignalNotificationExtension;
+			productReference = 436613C31F2F38FE009B5E8B /* OneSignalNotificationExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		43BC4A531F2F405D0014417D /* crap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43BC4A5D1F2F405D0014417D /* Build configuration list for PBXNativeTarget "crap" */;
+			buildPhases = (
+				43BC4A501F2F405D0014417D /* Sources */,
+				43BC4A511F2F405D0014417D /* Frameworks */,
+				43BC4A521F2F405D0014417D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = crap;
+			productName = crap;
+			productReference = 43BC4A541F2F405D0014417D /* crap.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		43EA684B1E95365D00B94683 /* FootyHeadlines */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43EA68741E95365D00B94683 /* Build configuration list for PBXNativeTarget "FootyHeadlines" */;
@@ -253,10 +387,13 @@
 				43EA684A1E95365D00B94683 /* Resources */,
 				868FE2A5B006477CFD479CEF /* [CP] Embed Pods Frameworks */,
 				6DA5F90B1DEE71F35024BED9 /* [CP] Copy Pods Resources */,
+				436613CF1F2F38FE009B5E8B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				436613CA1F2F38FE009B5E8B /* PBXTargetDependency */,
+				43BC4A5B1F2F405D0014417D /* PBXTargetDependency */,
 			);
 			name = FootyHeadlines;
 			productName = TestProject;
@@ -315,10 +452,28 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Footy Headlines";
 				TargetAttributes = {
+					436613C21F2F38FE009B5E8B = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = N9396EHA96;
+						ProvisioningStyle = Automatic;
+					};
+					43BC4A531F2F405D0014417D = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = N9396EHA96;
+						ProvisioningStyle = Automatic;
+					};
 					43EA684B1E95365D00B94683 = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = N9396EHA96;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					43EA685F1E95365D00B94683 = {
 						CreatedOnToolsVersion = 8.3;
@@ -348,11 +503,27 @@
 				43EA684B1E95365D00B94683 /* FootyHeadlines */,
 				43EA685F1E95365D00B94683 /* FootyHeadlinesTests */,
 				43EA686A1E95365D00B94683 /* FootyHeadlinesUITests */,
+				436613C21F2F38FE009B5E8B /* OneSignalNotificationExtension */,
+				43BC4A531F2F405D0014417D /* crap */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		436613C11F2F38FE009B5E8B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43BC4A521F2F405D0014417D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		43EA684A1E95365D00B94683 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -402,7 +573,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestProjectTests/Pods-TestProjectTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FootyHeadlinesTests/Pods-FootyHeadlinesTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		529E871E921BE225A64E588D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		5B9B868E09CB853B56E8044E /* [CP] Copy Pods Resources */ = {
@@ -417,7 +603,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestProjectTests/Pods-TestProjectTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FootyHeadlinesTests/Pods-FootyHeadlinesTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6DA5F90B1DEE71F35024BED9 /* [CP] Copy Pods Resources */ = {
@@ -432,7 +618,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestProject/Pods-TestProject-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FootyHeadlines/Pods-FootyHeadlines-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7797F1E245B23EDA5F9E8C1B /* [CP] Copy Pods Resources */ = {
@@ -447,7 +633,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestProjectUITests/Pods-TestProjectUITests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FootyHeadlinesUITests/Pods-FootyHeadlinesUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7ABA547920F30C5B71AB4652 /* [CP] Embed Pods Frameworks */ = {
@@ -462,7 +648,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestProjectUITests/Pods-TestProjectUITests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FootyHeadlinesUITests/Pods-FootyHeadlinesUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7BA5BE934E25FBA6F244B1E9 /* [CP] Check Pods Manifest.lock */ = {
@@ -492,7 +678,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestProject/Pods-TestProject-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FootyHeadlines/Pods-FootyHeadlines-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		958EEA2F4A13875FB92C9B54 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneSignalNotificationExtension/Pods-OneSignalNotificationExtension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C092D2180BCFAB1D36AE3096 /* [CP] Check Pods Manifest.lock */ = {
@@ -528,6 +729,21 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		436613BF1F2F38FE009B5E8B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				436613C71F2F38FE009B5E8B /* NotificationService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43BC4A501F2F405D0014417D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		43EA68481E95365D00B94683 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -571,6 +787,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		436613CA1F2F38FE009B5E8B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 436613C21F2F38FE009B5E8B /* OneSignalNotificationExtension */;
+			targetProxy = 436613C91F2F38FE009B5E8B /* PBXContainerItemProxy */;
+		};
+		43BC4A5B1F2F405D0014417D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 43BC4A531F2F405D0014417D /* crap */;
+			targetProxy = 43BC4A5A1F2F405D0014417D /* PBXContainerItemProxy */;
+		};
 		43EA68621E95365D00B94683 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 43EA684B1E95365D00B94683 /* FootyHeadlines */;
@@ -603,6 +829,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		436613CC1F2F38FE009B5E8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C93C8A50075A2F68D4CE355 /* Pods-OneSignalNotificationExtension.debug.xcconfig */;
+			buildSettings = {
+				DEVELOPMENT_TEAM = N9396EHA96;
+				INFOPLIST_FILE = OneSignalNotificationExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.footyheadlines.OneSignalNotificationExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		436613CD1F2F38FE009B5E8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F7329C1F00BD8FC4219BDDC /* Pods-OneSignalNotificationExtension.release.xcconfig */;
+			buildSettings = {
+				DEVELOPMENT_TEAM = N9396EHA96;
+				INFOPLIST_FILE = OneSignalNotificationExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.footyheadlines.OneSignalNotificationExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		43BC4A5E1F2F405D0014417D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = N9396EHA96;
+				INFOPLIST_FILE = crap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.footyheadlines.crap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		43BC4A5F1F2F405D0014417D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = N9396EHA96;
+				INFOPLIST_FILE = crap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.footyheadlines.crap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		43EA68721E95365D00B94683 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -700,9 +976,10 @@
 		};
 		43EA68751E95365D00B94683 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F9A6C55F0F1CA677F3043E61 /* Pods-TestProject.debug.xcconfig */;
+			baseConfigurationReference = ED3CC352302B40C3A4D0AFDA /* Pods-FootyHeadlines.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FootyHeadlines.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = N9396EHA96;
 				INFOPLIST_FILE = TestProject/Info.plist;
@@ -719,9 +996,10 @@
 		};
 		43EA68761E95365D00B94683 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 721AABF92B1674AB64072678 /* Pods-TestProject.release.xcconfig */;
+			baseConfigurationReference = 2B849A5E5396B67B607633F5 /* Pods-FootyHeadlines.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FootyHeadlines.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eial Donnenfeld (N9396EHA96)";
 				DEVELOPMENT_TEAM = N9396EHA96;
 				INFOPLIST_FILE = TestProject/Info.plist;
@@ -738,7 +1016,7 @@
 		};
 		43EA68781E95365D00B94683 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B228421ED937953E9856BCA /* Pods-TestProjectTests.debug.xcconfig */;
+			baseConfigurationReference = B07ECE5DAAD9D0BA4A84249D /* Pods-FootyHeadlinesTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -753,7 +1031,7 @@
 		};
 		43EA68791E95365D00B94683 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30B17B6F08631AA47EA5C293 /* Pods-TestProjectTests.release.xcconfig */;
+			baseConfigurationReference = 136E83EBF659989D7316FD84 /* Pods-FootyHeadlinesTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -768,7 +1046,7 @@
 		};
 		43EA687B1E95365D00B94683 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0513C1075E1BC8C2A78AAF14 /* Pods-TestProjectUITests.debug.xcconfig */;
+			baseConfigurationReference = 259528389FB471FCD03E6699 /* Pods-FootyHeadlinesUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = TestProjectUITests/Info.plist;
@@ -782,7 +1060,7 @@
 		};
 		43EA687C1E95365D00B94683 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2F12C29217FB7F8A1DA1B75 /* Pods-TestProjectUITests.release.xcconfig */;
+			baseConfigurationReference = 6DD6A30607F3D4D4616ABD1D /* Pods-FootyHeadlinesUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = TestProjectUITests/Info.plist;
@@ -797,6 +1075,23 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		436613CE1F2F38FE009B5E8B /* Build configuration list for PBXNativeTarget "OneSignalNotificationExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				436613CC1F2F38FE009B5E8B /* Debug */,
+				436613CD1F2F38FE009B5E8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43BC4A5D1F2F405D0014417D /* Build configuration list for PBXNativeTarget "crap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43BC4A5E1F2F405D0014417D /* Debug */,
+				43BC4A5F1F2F405D0014417D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		43EA68471E95365D00B94683 /* Build configuration list for PBXProject "FootyHeadlines" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

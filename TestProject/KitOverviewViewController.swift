@@ -10,6 +10,7 @@ import UIKit
 
 class KitOverviewViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var kitOverviewWebController: UIWebView!
+    let url = "http://www.footyheadlines.com/2017/01/2017-18-kit-overview-all-leaked-17-18-shirts.html?m=1&app=1"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,31 +19,49 @@ class KitOverviewViewController: UIViewController, UIWebViewDelegate {
         
         //self.navigationController?.pushViewController(KitOverviewViewController, animated: true)
         
-        let url = "http://www.footyheadlines.com/2017/01/2017-18-kit-overview-all-leaked-17-18-shirts.html?m=1&app=1"
-        
         kitOverviewWebController.loadRequest(URLRequest(url: URL(string: url)!))
+    }
+    
+    func baseUrl (url: String) -> String {
+        if let range = url.range(of: "[^?#]+", options: .regularExpression) {
+            return url.substring(with: range)
+        } else {
+            return url
+        }
     }
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         switch navigationType {
         case .linkClicked:
-            // open links in Safari
-            guard let url = request.url else { return true }
-            let realUrl = url.absoluteString + "?m=1&app=1"
+            guard let newUrl = request.url else { return true }
+            print(newUrl)
+            let realUrl = baseUrl(url: newUrl.absoluteString) + "?m=1&app=1"
             
-            if url.host?.range(of: "footyheadlines.com") != nil {
-                //kitOverviewWebController.loadRequest(URLRequest(url: URL(string: realUrl)!))
-                let newViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostItemView") as! PostItemWebViewController
-                //let newViewController = PostItemWebViewController()
-                newViewController.url = realUrl
-                self.navigationController?.pushViewController(newViewController, animated: true)
+            if newUrl.host?.range(of: "footyheadlines.com") != nil {
+                if newUrl.absoluteString.range(of:"#") != nil {
+                    return true
+                }
+                if baseUrl(url: newUrl.absoluteString) != baseUrl(url: url) {
+                    let nextUrl = baseUrl(url: newUrl.absoluteString)
+                    if nextUrl == "http://www.footyheadlines.com/2017/01/2017-18-kit-overview-all-leaked-17-18-shirts.html" {
+                        tabBarController?.selectedIndex = 2
+                    } else if nextUrl == "http://www.footyheadlines.com/2013/01/2013-boot-calender-updated-11-january.html" {
+                        tabBarController?.selectedIndex = 1
+                    } else {
+                        //wevView.loadRequest(URLRequest(url: URL(string: realUrl)!))
+                        let newViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostItemView") as! PostItemWebViewController
+                        //let newViewController = PostItemWebViewController()
+                        newViewController.url = realUrl
+                        self.navigationController?.pushViewController(newViewController, animated: true)
+                    }
+                }
                 return false
             }
             
             if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                UIApplication.shared.open(newUrl, options: [:], completionHandler: nil)
             } else {
-                UIApplication.shared.openURL(url)
+                UIApplication.shared.openURL(newUrl)
             }
             return false
         default:
